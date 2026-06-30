@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MyFarmSight – Smart Farm Management</title>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+
+
+  <style>
+    :root {
+      --green: #2ECC40;
+      --green-dark: #1fa32e;
+      --green-light: #d4f5d8;
+      --gray: #5a5a5a;
+      --gray-dark: #2d2d2d;
+      --off-white: #f7fbf7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--gray-dark);
+      background: #fff;
+      overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8f5e9;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo img {
+      height: 36px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .nav-cta:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 70px;
+      background: linear-gradient(160deg, #f0faf1 0%, #ffffff 55%, #e8f9ea 100%);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -80px;
+      right: -120px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(46, 204, 64, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(46, 204, 64, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 6px 14px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-badge span {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0.3
+      }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--gray-dark);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--gray);
+      margin-bottom: 2rem;
+      max-width: 480px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: #fff;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      font-family: 'Nunito', sans-serif;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+      box-shadow: 0 6px 24px rgba(46, 204, 64, 0.3);
+    }
+
+    .btn-primary:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(46, 204, 64, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gray-dark);
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      font-family: 'Nunito', sans-serif;
+      text-decoration: none;
+      border: 2px solid #ddd;
+      transition: all .2s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .hero-stores {
+      display: flex;
+      gap: .8rem;
+      margin-top: 1.5rem;
+      align-items: center;
+    }
+
+    .store-btn {
+      background: var(--gray-dark);
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background .2s;
+      font-size: 0.85rem;
+    }
+
+    .store-btn:hover {
+      background: #000;
+    }
+
+    .store-btn strong {
+      display: block;
+      font-size: 0.95rem;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .phone-mockup {
+      /* width: 280px; */
+      /* background: #111;
+      border-radius: 36px;
+      padding: 12px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.2), 0 0 0 2px #333; */
+      /* position: relative;  */
+      z-index: 100;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-16px)
+      }
+    }
+
+    .phone-screen {
+      background: linear-gradient(145deg, #1a1a1a 0%, #0f1f10 100%);
+      border-radius: 28px;
+      padding: 20px;
+      min-height: 500px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .phone-status {
+      display: flex;
+      justify-content: space-between;
+      color: #fff;
+      font-size: 0.65rem;
+      margin-bottom: 16px;
+    }
+
+    .phone-header {
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      font-family: 'Nunito', sans-serif;
+      margin-bottom: 4px;
+    }
+
+    .phone-sub {
+      color: var(--green);
+      font-size: 0.65rem;
+      margin-bottom: 14px;
+    }
+
+    .stat-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 12px;
+      padding: 10px;
+      border: 1px solid rgba(46, 204, 64, 0.2);
+    }
+
+    .stat-num {
+      color: var(--green);
+      font-weight: 900;
+      font-size: 1.1rem;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .stat-lbl {
+      color: #aaa;
+      font-size: 0.55rem;
+      margin-top: 2px;
+    }
+
+    .chart-bar-wrap {
+      margin-top: 12px;
+    }
+
+    .chart-lbl {
+      color: #888;
+      font-size: 0.6rem;
+      margin-bottom: 6px;
+    }
+
+    .bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 5px;
+      height: 60px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 4px 4px 0 0;
+      background: rgba(46, 204, 64, 0.3);
+      position: relative;
+      animation: grow 1.2s ease forwards;
+    }
+
+    @keyframes grow {
+      from {
+        height: 0
+      }
+    }
+
+    .bar.active {
+      background: var(--green);
+    }
+
+    .alert-card {
+      margin-top: 12px;
+      background: rgba(46, 204, 64, 0.1);
+      border: 1px solid rgba(46, 204, 64, 0.3);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .alert-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--green);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .alert-text {
+      color: #ccc;
+      font-size: 0.6rem;
+    }
+
+    /* Floating badge */
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: floatBadge 5s ease-in-out infinite;
+    }
+
+    @keyframes floatBadge {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-8px)
+      }
+    }
+
+    .float-badge-1 {
+      top: 40px;
+      right: -30px;
+      animation-delay: -2s;
+    }
+
+    .float-badge-2 {
+      bottom: 60px;
+      left: -50px;
+      animation-delay: -1s;
+    }
+
+    .float-badge .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+    }
+
+    .float-badge .info .num {
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--gray-dark);
+    }
+
+    .float-badge .info .lbl {
+      font-size: 0.7rem;
+      color: var(--gray);
+    }
+
+    /* ── SECTION SHARED ── */
+    section {
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--green-light);
+      color: var(--green-dark);
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.2;
+      color: var(--gray-dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--gray);
+      line-height: 1.8;
+      max-width: 580px;
+    }
+
+    /* ── WHY SECTION ── */
+    .why-section {
+      background: var(--off-white);
+    }
+
+    .stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .stat-strip-card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 2rem 1.5rem;
+      border: 1px solid #e8f5e9;
+      text-align: center;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .stat-strip-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(46, 204, 64, 0.12);
+    }
+
+    .stat-strip-card .big {
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--green);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .stat-strip-card .lbl {
+      font-size: 0.88rem;
+      color: var(--gray);
+      margin-top: 4px;
+    }
+
+    /* ── FEATURES ── */
+    .features-section {
+      background: #fff;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+    }
+
+    .feature-card {
+      background: #fff;
+      border: 1px solid #e8f5e9;
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all .25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--green);
+      transform: scaleX(0);
+      transition: transform .3s;
+    }
+
+    .feature-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(46, 204, 64, 0.1);
+      border-color: var(--green-light);
+    }
+
+    .feat-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+      color: var(--gray-dark);
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.7;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      background: linear-gradient(160deg, #f7fbf7 0%, #ffffff 100%);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 4rem;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: var(--green-light);
+      z-index: 0;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--green);
+      color: #fff;
+      font-weight: 900;
+      font-size: 1.2rem;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.2rem;
+      box-shadow: 0 6px 20px rgba(46, 204, 64, 0.35);
+    }
+
+    .step h3 {
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: .5rem;
+    }
+
+    .step p {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section {
+      background: var(--gray-dark);
+    }
+
+    .testimonials-section .section-title {
+      color: #fff;
+    }
+
+    .testimonials-section .section-sub {
+      color: #aaa;
+    }
+
+    .testimonials-section .section-tag {
+      background: rgba(46, 204, 64, 0.2);
+      color: var(--green);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .testi-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 2rem;
+      transition: all .2s;
+    }
+
+    .testi-card:hover {
+      background: rgba(46, 204, 64, 0.08);
+      border-color: rgba(46, 204, 64, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .testi-stars {
+      color: #f5a623;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      letter-spacing: 2px;
+    }
+
+    .testi-text {
+      color: #ddd;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--green-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--green-dark);
+      font-size: 1rem;
+    }
+
+    .testi-name {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .testi-role {
+      color: #888;
+      font-size: 0.78rem;
+    }
+
+    /* ── PRICING ── */
+    .pricing-section {
+      background: #fff;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3.5rem;
+      max-width: 960px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-card {
+      border: 2px solid #e8f5e9;
+      border-radius: 24px;
+      padding: 2.5rem 2rem;
+      transition: all .25s;
+      text-align: center;
+    }
+
+    .price-card.popular {
+      border-color: var(--green);
+      background: var(--green);
+      color: #fff;
+      transform: scale(1.04);
+      box-shadow: 0 20px 60px rgba(46, 204, 64, 0.35);
+    }
+
+    .price-card:hover:not(.popular) {
+      border-color: var(--green);
+      box-shadow: 0 12px 40px rgba(46, 204, 64, 0.1);
+    }
+
+    .popular-badge {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      padding: 4px 14px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+
+    .plan-name {
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+
+    .plan-price {
+      font-size: 2.8rem;
+      font-weight: 900;
+      font-family: 'Nunito', sans-serif;
+      margin-bottom: .25rem;
+    }
+
+    .plan-period {
+      font-size: 0.8rem;
+      opacity: .7;
+      margin-bottom: 1.5rem;
+    }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin-bottom: 2rem;
+    }
+
+    .plan-features li {
+      padding: 6px 0;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .plan-features li::before {
+      content: '✓';
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .price-card.popular .plan-features li::before {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .plan-btn {
+      display: block;
+      text-align: center;
+      padding: 13px;
+      border-radius: 50px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all .2s;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .plan-btn-outline {
+      border: 2px solid var(--green);
+      color: var(--green);
+    }
+
+    .plan-btn-outline:hover {
+      background: var(--green);
+      color: #fff;
+    }
+
+    .plan-btn-white {
+      background: #fff;
+      color: var(--green-dark);
+    }
+
+    .plan-btn-white:hover {
+      background: #f0f0f0;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, #1fa32e 0%, var(--green) 60%, #5bd96c 100%);
+      text-align: center;
+      padding: 7rem 2rem;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section p {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      max-width: 540px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .cta-btn-white {
+      background: #fff;
+      color: var(--green-dark);
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 800;
+      text-decoration: none;
+      font-family: 'Nunito', sans-serif;
+      transition: all .2s;
+    }
+
+    .cta-btn-white:hover {
+      background: #f0f0f0;
+      transform: translateY(-2px);
+    }
+
+    .cta-btn-ghost {
+      background: transparent;
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 50px;
+      font-weight: 700;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      font-family: 'Nunito', sans-serif;
+      transition: all .2s;
+    }
+
+    .cta-btn-ghost:hover {
+      border-color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: #888;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-top: .8rem;
+      max-width: 280px;
+    }
+
+    .footer-logo {
+      height: 32px;
+      filter: brightness(0) invert(1);
+      opacity: .8;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: .6rem;
+    }
+
+    .footer-col ul li a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color .2s;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--green);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #222;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom a {
+      color: #888;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: var(--green);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        display: none;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-card.popular {
+        transform: none;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .steps::before {
+        display: none;
+      }
+
+      .stats-strip {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .swiper {
+      width: 250px;
+      height: 650px;
+    }
+
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-logo">
+      <!-- SVG logo recreated from brand -->
+      <svg width="36" height="36" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="52" cy="52" r="44" stroke="#2ECC40" stroke-width="9" fill="none" />
+        <circle cx="52" cy="38" r="7" fill="#2ECC40" />
+        <path d="M20 62 Q36 50 52 58 Q68 66 84 54" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+          fill="none" />
+        <path d="M16 74 Q36 60 52 68 Q68 76 88 64" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+          fill="none" />
+        <path d="M20 86 Q38 72 52 78 Q66 84 84 74" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+          fill="none" />
+        <line x1="84" y1="84" x2="110" y2="110" stroke="#2ECC40" stroke-width="9" stroke-linecap="round" />
+      </svg>
+      <span class="brand" style="font-weight:900; font-size:1.25rem; color:#2d2d2d;">my<span
+          style="color:#2ECC40;">farm</span>sight</span>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#testimonials">Stories</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <a href="#" class="nav-cta">Get Started Free</a>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge"><span></span> Now supporting all livestock types</div>
+        <h1>Farm Smarter.<br />Grow <em>Faster.</em><br />Profit More.</h1>
+        <p>MyFarmSight is the all-in-one farm management platform that connects farmers, vets, and agri-professionals —
+          giving you real-time visibility into every corner of your operation.</p>
+
+        <div class="hero-buttons">
+          <a href="#" class="btn-primary">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+            Start Free Trial
+          </a>
+          <a href="#features" class="btn-outline">See Features →</a>
+        </div>
+
+        <div class="hero-stores">
+          <a href="#" class="store-btn">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.42.07 2.4.77 3.22.77.92 0 2.64-.95 4.44-.81 1.53.1 2.91.69 3.72 1.77-3.44 2.02-2.88 6.47.62 7.74-.46 1.3-1.05 2.59-4 3.39zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+            </svg>
+            <div><span style="font-size:0.62rem; opacity:.7">Download on the</span><strong>App Store</strong></div>
+          </a>
+          <a href="#" class="store-btn">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M3.18 23.76a2.42 2.42 0 01-.18-.93V1.17A2.43 2.43 0 013.37.1l12.37 11.87-12.56 11.79zM20.43 13.5l-2.54 1.47-2.83-2.72 2.83-2.72 2.57 1.48a1.39 1.39 0 010 2.49zM4.06 23.97l11.13-6.43-2.35-2.26L4.06 23.97zM4.06.03l8.78 8.69-2.35 2.26L4.06.03z" />
+            </svg>
+            <div><span style="font-size:0.62rem; opacity:.7">Get it on</span><strong>Google Play</strong></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone Mockup -->
+      <div class="hero-visual">
+        <div style="position:relative;">
+          <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+              <!-- Slides -->
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_3.png"></div>
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_6.png"></div>
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_5.png"></div>
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_4.png"></div>
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_1.png"></div>
+              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_2.png"></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- If we need navigation buttons -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+          </div>
+          <div class="phone-mockup">
+
+            <!-- Slider main container -->
+
+            <!-- <div class="phone-screen">
+            <div class="phone-status"><span>9:41</span><span>📶 🔋</span></div>
+            <div class="phone-header">🌿 MyFarmSight</div>
+            <div class="phone-sub">DASHBOARD · Batch #14 · Day 22</div>
+
+            <div class="stat-row">
+              <div class="stat-card">
+                <div class="stat-num">2,840</div>
+                <div class="stat-lbl">Live Birds</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">98.3%</div>
+                <div class="stat-lbl">Survival Rate</div>
+              </div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-card">
+                <div class="stat-num">₦1.2M</div>
+                <div class="stat-lbl">Revenue MTD</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-num">3.1kg</div>
+                <div class="stat-lbl">Avg Weight</div>
+              </div>
+            </div>
+
+            <div class="chart-bar-wrap">
+              <div class="chart-lbl">WEEKLY PRODUCTION TREND</div>
+              <div class="bars">
+                <div class="bar" style="height:40%"></div>
+                <div class="bar" style="height:55%"></div>
+                <div class="bar" style="height:48%"></div>
+                <div class="bar" style="height:70%"></div>
+                <div class="bar active" style="height:85%"></div>
+                <div class="bar" style="height:72%"></div>
+                <div class="bar" style="height:90%"></div>
+              </div>
+            </div>
+
+            <div class="alert-card">
+              <div class="alert-dot"></div>
+              <div class="alert-text">⚡ Feed stock low — reorder in 2 days</div>
+            </div>
+          </div> -->
+          </div>
+
+          <!-- <div class="float-badge float-badge-1">
+          <div class="icon">👨‍⚕️</div>
+          <div class="info">
+            <div class="num">Dr. Emeka</div>
+            <div class="lbl">Vet · 1.2km away · Online</div>
+          </div>
+        </div>
+
+        <div class="float-badge float-badge-2">
+          <div class="icon">📊</div>
+          <div class="info">
+            <div class="num">+24%</div>
+            <div class="lbl">Profit vs last batch</div>
+          </div>
+        </div> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── WHY ── -->
+  <section class="why-section" id="why">
+    <div class="section-inner">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+        <div>
+          <span class="section-tag">Why MyFarmSight?</span>
+          <h2 class="section-title">Every Farmer Who Keeps Records Earns More</h2>
+          <p class="section-sub">Data doesn't lie. Farms using digital management tools see dramatic improvements in
+            profitability, efficiency, and staff accountability. MyFarmSight brings all of that — and more — into one
+            powerful platform built for African agriculture.</p>
+          <br />
+          <a href="#features" class="btn-primary" style="display:inline-flex; margin-top:.5rem;">Explore Features →</a>
+        </div>
+        <div>
+          <div class="stats-strip" style="grid-template-columns:1fr 1fr; margin-top:0;">
+            <div class="stat-strip-card">
+              <div class="big">40%</div>
+              <div class="lbl">Average profit increase for farms using digital records</div>
+            </div>
+            <div class="stat-strip-card">
+              <div class="big">15+</div>
+              <div class="lbl">Livestock types supported, from poultry to cattle</div>
+            </div>
+            <div class="stat-strip-card">
+              <div class="big">NIN</div>
+              <div class="lbl">Verified staff and professional identities for trust & security</div>
+            </div>
+            <div class="stat-strip-card">
+              <div class="big">100%</div>
+              <div class="lbl">Real-time dashboard — know your farm status anytime</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FEATURES ── -->
+  <section class="features-section" id="features">
+    <div class="section-inner">
+      <div style="text-align:center; margin-bottom:1rem;">
+        <span class="section-tag">Platform Features</span>
+        <h2 class="section-title" style="max-width:600px; margin:0 auto 1rem;">Everything You Need to Run a Profitable
+          Farm</h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">From daily operations to professional
+          networking — MyFarmSight covers every inch of your farm management needs.</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="feat-icon">📊</div>
+          <h3>Real-Time Dashboard</h3>
+          <p>Monitor daily operations live — livestock counts, mortality, production, and income — all visualized in
+            intuitive infographics updated in real time.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">💰</div>
+          <h3>Financial Management</h3>
+          <p>Track stocking costs, feed expenses, sales revenue, and weekly/monthly summaries. Know exactly how
+            profitable every batch is.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">🌾</div>
+          <h3>Feed & Water Monitoring</h3>
+          <p>Log daily feed consumption, water quality checks, and stock levels. Get automated reminders when feed is
+            running low or water tanks need cleaning.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">🏥</div>
+          <h3>Health & Medication Records</h3>
+          <p>Maintain a complete sick bay log — medication administration, isolation records, and vet consultations.
+            Never miss a treatment cycle again.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">👥</div>
+          <h3>Staff Management & NIN Verify</h3>
+          <p>Collect staff bio-data, guarantor info, and next-of-kin digitally. NIN verification ensures every team
+            member is accountable and trusted.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">📍</div>
+          <h3>Location-Based Pro Network</h3>
+          <p>Discover verified veterinarians, labs, and agri-professionals near you. Chat in real time, request
+            consultations, and leave reviews — all within the app.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">📈</div>
+          <h3>Analytics & KPI Dashboards</h3>
+          <p>Weekly and monthly performance summaries. Compare batch-to-batch results, identify trends, and make
+            informed decisions backed by your own data.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">⭐</div>
+          <h3>Reviews & Rating System</h3>
+          <p>Build trust across the ecosystem. Rate veterinarians, labs, and other farmers. The platform rewards
+            integrity and quality service.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feat-icon">🔔</div>
+          <h3>Smart Alerts & Reminders</h3>
+          <p>Automated alerts for feed reorders, tank cleaning, medication schedules, staff birthdays, and follow-up
+            visits — nothing slips through the cracks.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HOW IT WORKS ── -->
+  <section class="how-section" id="how">
+    <div class="section-inner">
+      <div style="text-align:center;">
+        <span class="section-tag">How It Works</span>
+        <h2 class="section-title">Up and Running in Minutes</h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">MyFarmSight is designed to be simple enough for
+          any farmer, powerful enough for enterprise operations.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Create Your Account</h3>
+          <p>Sign up as a farmer or agricultural professional. Verify your identity and set up your farm profile in
+            minutes.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Add Your Livestock</h3>
+          <p>Record your animals, batches, and farm details. Add your staff with digital bio-data and NIN verification.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Track Daily Activities</h3>
+          <p>Log feed, water, production, health events, and financials each day. The dashboard updates automatically.
+          </p>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Grow with Data</h3>
+          <p>Use analytics, professional connections, and AI-powered insights to continuously improve and scale your
+            farm.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TESTIMONIALS ── -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="section-inner">
+      <span class="section-tag">Success Stories</span>
+      <h2 class="section-title">Farmers Thriving with MyFarmSight</h2>
+      <p class="section-sub">Real results from real farmers across Nigeria and beyond.</p>
+
+      <div class="testimonials-grid">
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Before MyFarmSight, I was guessing my profits at the end of each batch. Now I track
+            every naira in and out, and I've grown my flock from 3,000 to 12,000 birds in one year."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AO</div>
+            <div>
+              <div class="testi-name">Adewale Okafor</div>
+              <div class="testi-role">12,000 Broilers · Ogun State</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The NIN staff verification feature gave me peace of mind I never had before. And the
+            vet network? I found a specialist 1km from my farm I never knew existed. Absolute game changer."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">FK</div>
+            <div>
+              <div class="testi-name">Fatima Kano</div>
+              <div class="testi-role">Cattle & Goat Farm · Kaduna</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"I used my MyFarmSight financial reports to secure a bank loan to expand my piggery. No
+            bank would listen to me before. Now I have records — and a bigger farm."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">CI</div>
+            <div>
+              <div class="testi-name">Chukwuemeka Ike</div>
+              <div class="testi-role">Piggery · Anambra State</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"As a vet, subscribing to MyFarmSight brought me more clients in one month than I had in
+            a year of word-of-mouth. The location discovery feature is brilliant."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">Dr</div>
+            <div>
+              <div class="testi-name">Dr. Ngozi Emeka</div>
+              <div class="testi-role">Veterinarian · Lagos</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The mortality tracking and medication logs are incredibly detailed. I reduced my bird
+            losses by 35% in my first 3 months just by understanding the patterns in my data."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">BM</div>
+            <div>
+              <div class="testi-name">Bashir Mohammed</div>
+              <div class="testi-role">8,500 Layers · Kano</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"My farm managers now log everything on MyFarmSight. I monitor operations from Lagos
+            even when I'm at my main office. That remote visibility is priceless."</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TL</div>
+            <div>
+              <div class="testi-name">Taiwo Lawal</div>
+              <div class="testi-role">Multi-Farm Owner · Oyo & Kwara</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PRICING ── -->
+  <section class="pricing-section" id="pricing">
+    <div class="section-inner">
+      <div style="text-align:center;">
+        <span class="section-tag">Pricing</span>
+        <h2 class="section-title">Simple, Transparent Pricing</h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">Start free, scale as you grow. No hidden fees,
+          no surprises.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card">
+          <div class="plan-name">Starter</div>
+          <div class="plan-price">Free</div>
+          <div class="plan-period">Forever, up to 500 animals</div>
+          <ul class="plan-features">
+            <li>1 farm, up to 500 animals</li>
+            <li>Basic production tracking</li>
+            <li>Financial summary (monthly)</li>
+            <li>3 staff profiles</li>
+            <li>Email alerts</li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-outline">Get Started Free</a>
+        </div>
+
+        <div class="price-card popular">
+          <span class="popular-badge">Most Popular</span>
+          <div class="plan-name">Pro Farmer</div>
+          <div class="plan-price">₦9,900</div>
+          <div class="plan-period">per month · billed monthly</div>
+          <ul class="plan-features">
+            <li>Unlimited animals</li>
+            <li>Full financial management</li>
+            <li>Feed & water monitoring</li>
+            <li>Health & medication records</li>
+            <li>Staff NIN verification</li>
+            <li>Access to Pro Network</li>
+            <li>Analytics & KPI dashboards</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-white">Start 14-Day Trial</a>
+        </div>
+
+        <div class="price-card">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price">Custom</div>
+          <div class="plan-period">Multi-farm & corporate plans</div>
+          <ul class="plan-features">
+            <li>Unlimited farms & animals</li>
+            <li>Multi-location management</li>
+            <li>Custom KPI dashboards</li>
+            <li>Dedicated account manager</li>
+            <li>API & integrations</li>
+            <li>Staff training & onboarding</li>
+            <li>SLA & uptime guarantee</li>
+          </ul>
+          <a href="#" class="plan-btn plan-btn-outline">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" id="contact">
+    <h2>Ready to Transform Your Farm?</h2>
+    <p>Join thousands of farmers across Nigeria already using MyFarmSight to manage smarter, grow faster, and earn more.
+    </p>
+    <div class="cta-buttons">
+      <a href="#" class="cta-btn-white">🌿 Start Free Trial</a>
+      <a href="#" class="cta-btn-ghost">📞 Talk to Our Team</a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:.5rem;">
+            <svg width="28" height="28" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="52" cy="52" r="44" stroke="#2ECC40" stroke-width="9" fill="none" />
+              <circle cx="52" cy="38" r="7" fill="#2ECC40" />
+              <path d="M20 62 Q36 50 52 58 Q68 66 84 54" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+                fill="none" />
+              <path d="M16 74 Q36 60 52 68 Q68 76 88 64" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+                fill="none" />
+              <path d="M20 86 Q38 72 52 78 Q66 84 84 74" stroke="#2ECC40" stroke-width="7" stroke-linecap="round"
+                fill="none" />
+              <line x1="84" y1="84" x2="110" y2="110" stroke="#2ECC40" stroke-width="9" stroke-linecap="round" />
+            </svg>
+            <span class="brand" style="font-weight:900; font-size:1.1rem; color:#fff;">my<span
+                style="color:#2ECC40;">farm</span>sight</span>
+          </div>
+          <p>Comprehensive farm management for the modern African farmer. Monitor, manage, and grow — all from your
+            pocket.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Pro Network</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Mobile App</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Training Videos</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 MyFarmSight. All rights reserved.</span>
+        <div style="display:flex; gap:1.5rem;">
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+
+    const swiper = new Swiper('.swiper', {
+      // Optional parameters
+      direction: 'horizontal',
+      loop: true,
+
+      // Pagination
+      pagination: {
+        el: '.swiper-pagination',
+      },
+
+      // Navigation arrows
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      autoplay: { delay: 2500 }
+    });
+  </script>
+</body>
+
+</html>
