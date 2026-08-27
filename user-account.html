@@ -319,6 +319,11 @@
       cursor: pointer;
     }
 
+    .confirm-box label {
+      cursor: pointer;
+      margin-bottom: 0;
+    }
+
     .confirm-box strong {
       color: var(--text);
     }
@@ -397,7 +402,7 @@
         </div>
       </div>
 
-      <form action="send-delete-request.php" method="POST">
+  <form action="/api/send-delete-request" method="POST">
 
   <div style="display:none;" aria-hidden="true">
     <input type="text" name="website_hp" tabindex="-1" autocomplete="off">
