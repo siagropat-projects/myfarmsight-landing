@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Delete Account</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --bg2: #eef2ff;
+      --card: rgba(255,255,255,0.78);
+      --border: rgba(0,0,0,0.08);
+      --text: #0f172a;
+      --muted: #64748b;
+      --danger: #ef4444;
+      --danger2: #fb7185;
+      --shadow: 0 30px 80px rgba(15, 23, 42, 0.18);
+      --radius: 22px;
+      --inputbg: rgba(255,255,255,0.75);
+    }
+
+    body.dark {
+      --bg: #05060d;
+      --bg2: #0b1220;
+      --card: rgba(15, 23, 42, 0.72);
+      --border: rgba(255,255,255,0.08);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --shadow: 0 30px 80px rgba(0,0,0,0.55);
+      --inputbg: rgba(2, 6, 23, 0.65);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
+      background: radial-gradient(circle at top left, var(--bg2), var(--bg));
+      color: var(--text);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Animated background blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.55;
+      z-index: 0;
+      animation: floatBlob 10s ease-in-out infinite alternate;
+    }
+
+    .blob.one {
+      width: 320px;
+      height: 320px;
+      background: rgba(239, 68, 68, 0.35);
+      top: -120px;
+      left: -120px;
+    }
+
+    .blob.two {
+      width: 380px;
+      height: 380px;
+      background: rgba(99, 102, 241, 0.35);
+      bottom: -160px;
+      right: -160px;
+      animation-delay: 2s;
+    }
+
+    .blob.three {
+      width: 260px;
+      height: 260px;
+      background: rgba(34, 197, 94, 0.25);
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      animation-delay: 4s;
+    }
+
+    @keyframes floatBlob {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(40px, -30px) scale(1.1); }
+    }
+
+    .wrapper {
+      width: 100%;
+      max-width: 980px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      background: var(--card);
+      backdrop-filter: blur(16px);
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      position: relative;
+      z-index: 5;
+    }
+
+    .left {
+      padding: 50px;
+      background: linear-gradient(135deg, rgba(239,68,68,0.12), rgba(251,113,133,0.10));
+      position: relative;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(239,68,68,0.14);
+      border: 1px solid rgba(239,68,68,0.25);
+      color: var(--danger);
+      font-weight: 700;
+      font-size: 13px;
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
+    .badge span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--danger);
+      display: inline-block;
+    }
+
+    .left h1 {
+      margin-top: 20px;
+      font-size: 38px;
+      line-height: 1.1;
+    }
+
+    .left p {
+      margin-top: 14px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+      max-width: 360px;
+    }
+
+    .note {
+      margin-top: 25px;
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    body.dark .note {
+      background: rgba(2, 6, 23, 0.45);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .note strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--danger);
+    }
+
+    .note small {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      display: block;
+    }
+
+    .right {
+      padding: 50px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .topbar h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    /* Toggle switch */
+    .toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .switch {
+      width: 52px;
+      height: 28px;
+      background: rgba(0,0,0,0.12);
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
+      transition: 0.25s ease;
+      border: 1px solid rgba(0,0,0,0.12);
+    }
+
+    body.dark .switch {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .knob {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: white;
+      position: absolute;
+      top: 2.5px;
+      left: 3px;
+      transition: 0.25s ease;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    }
+
+    body.dark .knob {
+      left: 26px;
+      background: #0f172a;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    label {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+
+    textarea, input {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.12);
+      background: var(--inputbg);
+      outline: none;
+      font-size: 14px;
+      color: var(--text);
+      transition: 0.2s ease;
+    }
+
+    body.dark textarea, body.dark input {
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    textarea {
+      min-height: 140px;
+      resize: vertical;
+    }
+
+    textarea:focus, input:focus {
+      border-color: rgba(239,68,68,0.55);
+      box-shadow: 0 0 0 5px rgba(239,68,68,0.14);
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .row3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Confirmation checkbox */
+    .confirm-box {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.08);
+      background: rgba(0,0,0,0.02);
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    body.dark .confirm-box {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .confirm-box input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--danger);
+      cursor: pointer;
+    }
+
+    .confirm-box strong {
+      color: var(--text);
+    }
+
+    .btn {
+      margin-top: 8px;
+      border: none;
+      padding: 14px;
+      border-radius: 16px;
+      font-weight: 800;
+      font-size: 15px;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--danger), var(--danger2));
+      color: white;
+      transition: 0.2s ease;
+      box-shadow: 0 16px 40px rgba(239,68,68,0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 22px 45px rgba(239,68,68,0.30);
+    }
+
+    .btn:active {
+      transform: translateY(0px);
+    }
+
+    .footer {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    @media(max-width: 920px) {
+      .wrapper { grid-template-columns: 1fr; }
+      .row, .row3 { grid-template-columns: 1fr; }
+      .left, .right { padding: 35px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Animated blobs -->
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+  <div class="blob three"></div>
+
+  <div class="wrapper">
+    <div class="left">
+      <div class="badge"><span></span> Account Deletion Request</div>
+      <h1>We’re sad to see you go.</h1>
+      <p>
+        Before we process your account deletion request, please share your feedback.
+        This helps us improve and serve users better.
+      </p>
+
+      <div class="note">
+        <strong>Important Notice</strong>
+        <small>
+          Once your request is submitted, it may take up to 24–48 hours to process.
+          Some data may be permanently removed and cannot be recovered.
+        </small>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="topbar">
+        <h2>Submit Request</h2>
+
+        <div class="toggle">
+          <span>Dark Mode</span>
+          <div class="switch" id="themeToggle">
+            <div class="knob"></div>
+          </div>
+        </div>
+      </div>
+
+      <form action="send-delete-request.php" method="POST">
+
+        <div>
+          <label for="feedback">Your Feedback *</label>
+          <textarea id="feedback" name="feedback" placeholder="Tell us what went wrong or what we can improve..." required></textarea>
+        </div>
+
+        <div class="row">
+          <div>
+            <label for="name">Full Name *</label>
+            <input id="name" name="name" type="text" placeholder="John Doe" required>
+          </div>
+
+          <div>
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="john@example.com" required>
+          </div>
+        </div>
+
+        <div class="row3">
+          <div>
+            <label for="username">Username *</label>
+            <input id="username" name="username" type="text" placeholder="@johnny" required>
+          </div>
+
+          <div>
+            <label for="phone">Phone (Optional)</label>
+            <input id="phone" name="phone" type="text" placeholder="+1 555 123 4567">
+          </div>
+
+          <div>
+            <label for="reason">Reason (Optional)</label>
+            <input id="reason" name="reason" type="text" placeholder="Too expensive">
+          </div>
+        </div>
+
+        <!-- Confirmation checkbox -->
+        <div class="confirm-box">
+          <input type="checkbox" id="confirmDelete" name="confirmDelete" required>
+          <label for="confirmDelete">
+            <strong>I understand this is irreversible.</strong><br>
+            I confirm that I want to permanently request deletion of this account.
+          </label>
+        </div>
+
+        <button class="btn" type="submit">Confirm Account Deletion</button>
+
+        <div class="footer">
+          By submitting, you confirm you are the owner of this account and authorize us to process your deletion request.
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const toggle = document.getElementById("themeToggle");
+
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      document.body.classList.add("dark");
+    }
+
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+
+      if (document.body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+      } else {
+        localStorage.setItem("theme", "light");
+      }
+    });
+  </script>
+
+</body>
+</html>

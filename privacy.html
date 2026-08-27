@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — MyFarmSight</title>
+  <link rel="icon" type="image/svg+xml" href="icon.png">
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Main Brand Colors */
+      --green: #2ECC40;
+      --green-dark: #1fa32e;
+      --green-light: #d4f5d8;
+      --gray: #5a5a5a;
+      --gray-dark: #2d2d2d;
+      --off-white: #f7fbf7;
+      
+      /* Policy Specific Colors */
+      --ink: #0e1a0f;
+      --muted: #5a5a5a;
+      --border: #e8f5e9;
+      --accent: #f5f0e8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--gray-dark);
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, h4, .brand {
+      font-family: 'Nunito', sans-serif;
+    }
+
+    /* ── NAV ── */
+    nav.main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e8f5e9;
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo a {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-logo img {
+      height: 36px;
+    }
+
+    @media (min-width: 768px) {
+      .nav-logo img { height: 50px; }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--green);
+    }
+
+    .nav-cta {
+      background: var(--green);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-decoration: none;
+      transition: background .2s, transform .15s;
+    }
+
+    .nav-cta:hover {
+      background: var(--green-dark);
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, #5bd96c 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      margin-top: 70px; /* Offset for fixed nav */
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0,0,0,0.08) 0%, transparent 60%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 100px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(6px);
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: rgba(255,255,255,0.9);
+      max-width: 560px;
+      font-weight: 400;
+      margin-bottom: 36px;
+    }
+
+    .hero-meta {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.88rem;
+      font-weight: 500;
+    }
+
+    /* ── TOC BAR ── */
+    .toc-bar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 70px; /* Offset for main nav */
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .toc-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .toc-inner::-webkit-scrollbar { display: none; }
+
+    .toc-logo {
+      font-family: 'Nunito', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      white-space: nowrap;
+      padding: 14px 20px 14px 0;
+      border-right: 1px solid var(--border);
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .toc-link {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      white-space: nowrap;
+      padding: 14px 12px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .toc-link:hover {
+      color: var(--green-dark);
+      border-bottom-color: var(--green);
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 32px 100px;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      position: sticky;
+      top: 150px; /* Nav (70) + TOC (~50) + Margin */
+    }
+
+    .sidebar-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+    }
+
+    .sidebar-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gray);
+      font-weight: 700;
+      margin-bottom: 14px;
+      font-family: 'Nunito', sans-serif;
+    }
+
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--gray-dark);
+      font-size: 0.85rem;
+      font-weight: 500;
+      padding: 8px 10px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+      margin: 0 -10px;
+    }
+
+    .sidebar-nav a:hover {
+      background: var(--green-light);
+      color: var(--green-dark);
+    }
+
+    .sidebar-nav a .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #d1d5db;
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+
+    .sidebar-nav a:hover .dot { background: var(--green); }
+
+    .contact-card {
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      border: none;
+      color: #fff;
+    }
+
+    .contact-card .sidebar-label { color: rgba(255,255,255,0.7); }
+
+    .contact-card p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .contact-card a {
+      color: var(--green-dark);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: #fff;
+      padding: 8px 16px;
+      border-radius: 100px;
+      display: inline-block;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .contact-card a:hover { 
+      background: var(--off-white);
+      transform: translateY(-1px);
+    }
+
+    /* ── CONTENT ── */
+    .section {
+      margin-bottom: 64px;
+      scroll-margin-top: 140px;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .section-num {
+      font-family: 'Nunito', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--green-light);
+      line-height: 1;
+      flex-shrink: 0;
+      padding-top: 3px;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gray-dark);
+      line-height: 1.2;
+    }
+
+    .section-body {
+      padding-left: 56px;
+    }
+
+    .section-body p {
+      color: var(--gray);
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    .sub-section {
+      margin-top: 24px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    }
+
+    .sub-section h3 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--green-dark);
+      margin-bottom: 12px;
+    }
+
+    .sub-section p {
+      color: var(--gray);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      color: var(--gray);
+      font-size: 0.95rem;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .bullet-list li:last-child { border-bottom: none; }
+
+    .bullet-list li::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── HIGHLIGHT CARDS ── */
+    .highlight-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 24px 0 0;
+    }
+
+    .highlight-card {
+      background: var(--off-white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      transition: transform 0.2s;
+    }
+    
+    .highlight-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--green-light);
+    }
+
+    .highlight-card .icon { font-size: 1.5rem; }
+
+    .highlight-card strong {
+      font-size: 0.9rem;
+      color: var(--gray-dark);
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      display: block;
+    }
+
+    .highlight-card span {
+      font-size: 0.85rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 56px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111;
+      color: #888;
+      padding: 2rem;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand p {
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-top: .8rem;
+      max-width: 280px;
+    }
+    .footer-logo {
+      height: 32px;
+      opacity: .8;
+    }
+    .footer-col h4 {
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      font-family: 'Nunito', sans-serif;
+    }
+    .footer-col ul {
+      list-style: none;
+    }
+    .footer-col ul li {
+      margin-bottom: .6rem;
+    }
+    .footer-col ul li a {
+      color: #888;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color .2s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--green);
+    }
+    .footer-bottom {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+    }
+    .footer-socials a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 1.5rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.05);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+    }
+    .footer-socials a:hover {
+      color: var(--green);
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .footer-socials a:hover.fa-facebook { color: #1877F2; border-color: #1877F2; }
+    .footer-socials a:hover.fa-instagram { color: #E4405F; border-color: #E4405F; }
+    .footer-socials a:hover.fa-tiktok { color: #fff; border-color: #fff; }
+    .footer-socials a:hover.fa-x-twitter { color: #fff; border-color: #fff; }
+    .footer-socials a:hover.fa-youtube { color: #FF0000; border-color: #FF0000; }
+    
+    .footer-extra-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-extra-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color .2s;
+    }
+    .footer-extra-links a:hover {
+      color: var(--green);
+    }
+    
+    .copyright {
+      color: #666;
+      text-align: center;
+    }
+
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .page-wrap {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px 60px;
+      }
+      .sidebar { position: static; display: none; }
+      .hero-inner { padding: 64px 24px 56px; }
+      .section-body { padding-left: 0; }
+      .section-num { display: none; }
+      .toc-inner { padding: 0 16px; }
+    }
+    
+    @media (max-width: 600px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+    }
+
+    /* Store badges — matching the provided reference image */
+    .footer-stores {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 1.5rem !important;
+      flex-wrap: wrap !important;
+      width: 100%;
+    }
+    .footer-stores .store-btn {
+      width: 250px !important;
+      min-height: 80px !important;
+      padding: 12px 24px 12px 20px !important;
+      border-radius: 14px !important;
+      background: #252525 !important;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 18px !important;
+      box-sizing: border-box !important;
+      flex: 0 0 auto !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+    .footer-stores .store-btn svg {
+      display: block !important;
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      flex: 0 0 38px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+    .footer-stores .store-btn > div {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      line-height: 1.2 !important;
+    }
+    .footer-stores .store-btn span {
+      font-size: 0.85rem !important;
+      font-weight: 500 !important;
+      color: #cccccc !important;
+      margin-bottom: 2px !important;
+      white-space: nowrap !important;
+    }
+    .footer-stores .store-btn strong {
+      font-size: 1.6rem !important;
+      font-weight: 700 !important;
+      color: #ffffff !important;
+      white-space: nowrap !important;
+      letter-spacing: 0.01em !important;
+    }
+    .footer-stores .store-btn:hover {
+      transform: translateY(-2px);
+      background: #333333 !important;
+    }
+    @media (max-width: 680px) {
+      .footer-stores {
+        gap: 1rem !important;
+      }
+      .footer-stores .store-btn {
+        width: min(250px, 100%) !important;
+        min-height: 70px !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="main-nav">
+    <div class="nav-logo">
+      <a href="/">
+        <img src="./images/my-farm-sight-logo.svg" alt="MyFarmSight Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span style="display:none; font-family: 'Nunito', sans-serif; font-weight: 800; font-size: 1.2rem; color: var(--green-dark);">🌿 MyFarmSight</span>
+      </a>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#testimonials">Stories</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+
+    <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="nav-cta">Get Started Free</a>
+  </nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" class="mr-1"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Privacy & Security
+    </div>
+    <h1>Your Privacy,<br>Our Commitment</h1>
+    <p>We are dedicated to protecting the privacy and security of your personal and operational farm data. Here's everything you need to know.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        Effective Date: April 2026
+      </div>
+      <div class="hero-meta-item">
+        <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        8 min read
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- TOC BAR -->
+<nav class="toc-bar" aria-label="Quick navigation">
+  <div class="toc-inner">
+    <div class="toc-logo">Contents</div>
+    <a class="toc-link" href="#intro">Introduction</a>
+    <a class="toc-link" href="#collection">Data We Collect</a>
+    <a class="toc-link" href="#use">How We Use It</a>
+    <a class="toc-link" href="#sharing">Sharing</a>
+    <a class="toc-link" href="#security">Security</a>
+    <a class="toc-link" href="#rights">Your Rights</a>
+    <a class="toc-link" href="#children">Children</a>
+    <a class="toc-link" href="#changes">Changes</a>
+    <a class="toc-link" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- MAIN CONTENT -->
+<div class="page-wrap">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-card">
+      <div class="sidebar-label">On this page</div>
+      <nav class="sidebar-nav">
+        <a href="#intro"><span class="dot"></span>Introduction</a>
+        <a href="#collection"><span class="dot"></span>Data We Collect</a>
+        <a href="#use"><span class="dot"></span>How We Use It</a>
+        <a href="#sharing"><span class="dot"></span>Sharing</a>
+        <a href="#security"><span class="dot"></span>Security & Retention</a>
+        <a href="#rights"><span class="dot"></span>Your Rights</a>
+        <a href="#children"><span class="dot"></span>Children's Privacy</a>
+        <a href="#changes"><span class="dot"></span>Policy Changes</a>
+        <a href="#contact"><span class="dot"></span>Contact Us</a>
+      </nav>
+    </div>
+    <div class="sidebar-card contact-card">
+      <div class="sidebar-label">Questions?</div>
+      <p>We're happy to help with any privacy queries or data requests.</p>
+      <a href="mailto:info@myfarmsight.com">✉ Email Us</a>
+    </div>
+  </aside>
+
+  <!-- POLICY CONTENT -->
+  <main class="content">
+
+    <!-- 1. Introduction -->
+    <section class="section" id="intro">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2>Introduction</h2>
+      </div>
+      <div class="section-body">
+        <p>Welcome to <strong>MyFarmSight</strong> ("we", "us" or "our"). We are committed to protecting the privacy and security of your personal and operational data. This Privacy Policy explains how we collect, use, store, share, and protect information when you use our farm management application, including our mobile applications, website and related services (collectively, the "Platform").</p>
+        <p>By accessing or using MyFarmSight, you agree to the practices described in this Privacy Policy. If you do not agree, please discontinue use of the Service.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 2. Data Collection -->
+    <section class="section" id="collection">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2>Information We Collect</h2>
+      </div>
+      <div class="section-body">
+        <p>To provide a complete ecosystem for farm management, we collect different types of information depending on how you use our platform — whether as a Farm Owner, Farm Staff, or Veterinarian.</p>
+
+        <div class="sub-section">
+          <h3>2.1 Information You Provide Directly</h3>
+          <p>We collect information you voluntarily provide when registering or using the Service, including:</p>
+          <ul class="bullet-list">
+            <li>Account details: name, email address, and phone number</li>
+            <li>Farm profile data: farm name, location (address or GPS coordinates), farm size, and type of operation</li>
+            <li>Veterinarian profile data: name, professional contact details, location, and practice information</li>
+            <li>Operational records: livestock details, batch details, egg production, medication logs</li>
+            <li>Financial information: sales, revenue records, and expenses entered into the application</li>
+            <li>Communications: messages, support requests, or feedback you send to us</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <h3>2.2 Information from Third Parties</h3>
+          <p>We may receive data from external sources to enhance the Service, including payment processors for billing and subscription management, and third-party identity verification services (e.g., NIN verification).</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 3. How We Use -->
+    <section class="section" id="use">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2>How We Use Your Information</h2>
+      </div>
+      <div class="section-body">
+        <p>We use the information we collect to operate, maintain, and improve the MyFarmSight ecosystem.</p>
+
+        <div class="highlight-row">
+          <div class="highlight-card">
+            <div class="icon">📊</div>
+            <strong>Core Services</strong>
+            <span>Delivering and improving MyFarmSight's key features</span>
+          </div>
+          <div class="highlight-card">
+            <div class="icon">🔔</div>
+            <strong>Notifications</strong>
+            <span>Automated alerts for feed, water, medications & updates</span>
+          </div>
+          <div class="highlight-card">
+            <div class="icon">🔒</div>
+            <strong>Security</strong>
+            <span>Identity verification and fraud prevention</span>
+          </div>
+          <div class="highlight-card">
+            <div class="icon">📚</div>
+            <strong>Learning</strong>
+            <span>Tracking staff progress in training modules</span>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3>3.1 Providing and Improving the Service</h3>
+          <ul class="bullet-list">
+            <li>Operate, maintain, and deliver core features of the MyFarmSight ecosystem</li>
+            <li>Personalise your experience based on your farm type and operational history</li>
+            <li>Process and store your farm records securely</li>
+            <li>Track staff progress in our learning platform</li>
+            <li>Authenticate staff and veterinarians to maintain a secure and trusted community</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <h3>3.2 Communications</h3>
+          <ul class="bullet-list">
+            <li>Send transactional emails (account confirmations, password resets, billing receipts)</li>
+            <li>Provide alerts such as compliance reminders relevant to your operation</li>
+            <li>Send marketing communications about new features or offers (you may opt out at any time)</li>
+            <li>Deliver automated alerts for feed reorders, water cleaning, medication schedules, and platform updates</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <h3>3.3 Legal and Regulatory Compliance</h3>
+          <ul class="bullet-list">
+            <li>Respond to lawful requests from regulatory or law enforcement authorities</li>
+            <li>Detect, investigate, and prevent fraudulent or unauthorised use of the Service</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 4. Sharing -->
+    <section class="section" id="sharing">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2>How We Share Your Information</h2>
+      </div>
+      <div class="section-body">
+        <p><strong>We do not sell your personal data.</strong> We may share information in the following limited circumstances:</p>
+
+        <div class="sub-section">
+          <h3>4.1 Service Providers</h3>
+          <p>We may share data with trusted third-party vendors who assist us in operating our platform, including cloud hosting, payment processing, identity verification, and customer support.</p>
+        </div>
+
+        <div class="sub-section">
+          <h3>4.2 Between Platform Users</h3>
+          <ul class="bullet-list">
+            <li>Farm details and chat data are shared with veterinarians you choose to consult</li>
+            <li>Veterinarian profiles (including ratings and services) are visible to farmers</li>
+            <li>Farm Owners have visibility over data logged and learning modules completed by their Farm Staff</li>
+          </ul>
+        </div>
+
+        <div class="sub-section">
+          <h3>4.3 Business Transfers</h3>
+          <p>In the event of a merger, acquisition, or sale of assets, your data may be transferred to the successor entity. We will notify you before your data becomes subject to a materially different privacy policy.</p>
+        </div>
+
+        <div class="sub-section">
+          <h3>4.4 Legal Requirements</h3>
+          <p>We may disclose data where required by law, court order, or regulatory authority, or where necessary to protect the rights, property, and safety of MyFarmSight, our users, or others.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 5. Security -->
+    <section class="section" id="security">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2>Data Security &amp; Retention</h2>
+      </div>
+      <div class="section-body">
+        <p>We implement industry-standard technical security measures to protect your information, including:</p>
+        <div class="sub-section">
+          <ul class="bullet-list">
+            <li>Protection of personal and farm data from unauthorized access, alteration, or disclosure</li>
+            <li>Role-based access controls limiting staff access — farm owners can grant access to supervisors or staff, with restricted platform access for certain functions</li>
+            <li>Data retained for as long as your account is active or as needed for services, legal obligations, and dispute resolution</li>
+          </ul>
+        </div>
+        <p style="margin-top: 16px;">While we take all reasonable precautions, we encourage you to use strong passwords and to notify us immediately if you suspect any unauthorised access to your account.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 6. Rights -->
+    <section class="section" id="rights">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2>Your Rights &amp; Choices</h2>
+      </div>
+      <div class="section-body">
+        <p>You have the right to access, update, or delete your personal information within the MyFarmSight app. If you wish to permanently delete your account or require assistance accessing your data, please contact our support team.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 7. Children -->
+    <section class="section" id="children">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <h2>Children's Privacy</h2>
+      </div>
+      <div class="section-body">
+        <p>MyFarmSight is not directed at children under the age of 16. We do not knowingly collect personal data from children. If you believe a child has provided us with their information, please contact us and we will promptly delete it.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- 8. Changes -->
+    <section class="section" id="changes">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <div class="section-body">
+        <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. We will notify you of material changes by:</p>
+        <div class="sub-section">
+          <ul class="bullet-list">
+            <li>Sending an email to your registered address</li>
+            <li>Displaying a prominent notice within the application</li>
+            <li>Updating the effective date on the website</li>
+          </ul>
+        </div>
+        <p style="margin-top:14px;">Your continued use of the Service after the effective date of any update constitutes acceptance of the revised policy. We encourage you to review this policy periodically.</p>
+      </div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact -->
+    <section class="section" id="contact">
+      <div class="section-header">
+        <div class="section-num">✉</div>
+        <h2>Contact Us</h2>
+      </div>
+      <div class="section-body">
+        <p>If you have any questions, concerns, or requests relating to this Privacy Policy or our data practices, please reach out to us:</p>
+        <div class="sub-section" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <strong style="color:var(--green-dark); font-size:0.95rem; font-family:'Nunito', sans-serif;">Email Support</strong>
+            <p style="margin:4px 0 0;"><a href="mailto:info@myfarmsight.com" style="color:var(--gray-dark); text-decoration:none; font-weight:600;">info@myfarmsight.com</a></p>
+          </div>
+          <a href="mailto:info@myfarmsight.com" style="display:inline-flex; align-items:center; gap:8px; background:var(--green); color:#fff; text-decoration:none; font-size:0.9rem; font-weight:700; font-family:'Nunito', sans-serif; padding:12px 28px; border-radius:100px; transition:background 0.2s;">
+            ✉ Send a message
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-bottom">
+        <div class="footer-stores">
+          <a href="#" class="store-btn">
+            <svg width="22" height="22" fill="white" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" style="display:block; flex:0 0 auto;">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.42.07 2.4.77 3.22.77.92 0 2.64-.95 4.44-.81 1.53.1 2.91.69 3.72 1.77-3.44 2.02-2.88 6.47.62 7.74-.46 1.3-1.05 2.59-4 3.39zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+            </svg>
+            <div><span>Download on the</span><strong>App Store</strong></div>
+          </a>
+          <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="store-btn">
+            <svg width="22" height="22" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" style="display:block; flex:0 0 auto;"
+              text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+              clip-rule="evenodd" viewBox="0 0 466 511.98">
+              <g id="Layer_x0020_1">
+                <path fill="#EA4335" fill-rule="nonzero" d="M199.9 237.8l-198.5 232.37c7.22,24.57 30.16,41.81 55.8,41.81 11.16,0 20.93,-2.79 29.3,-8.37l0 0 244.16 -139.46 -130.76 -126.35z" />
+                <path fill="#FBBC04" fill-rule="nonzero" d="M433.91 205.1l0 0 -104.65 -60 -111.61 110.22 113.01 108.83 104.64 -58.6c18.14,-9.77 30.7,-29.3 30.7,-50.23 -1.4,-20.93 -13.95,-40.46 -32.09,-50.22z" />
+                <path fill="#34A853" fill-rule="nonzero" d="M199.42 273.45l129.85 -128.35 -241.37 -136.73c-8.37,-5.58 -19.54,-8.37 -30.7,-8.37 -26.5,0 -50.22,18.14 -55.8,41.86 0,0 0,0 0,0l198.02 231.59z" />
+                <path fill="#4285F4" fill-rule="nonzero" d="M1.39 41.86c-1.39,4.18 -1.39,9.77 -1.39,15.34l0 397.64c0,5.57 0,9.76 1.4,15.34l216.27 -214.86 -216.28 -213.46z" />
+              </g>
+            </svg>
+            <div><span>Get it on</span><strong>Google Play</strong></div>
+          </a>
+        </div>
+        <div class="footer-socials">
+          <a href="https://web.facebook.com/profile.php?id=61583886656196" target="_blank" aria-label="Facebook" class="fab fa-facebook"></a>
+          <a href="https://www.instagram.com/myfarmsight/" target="_blank" aria-label="Instagram" class="fab fa-instagram"></a>
+          <a href="https://www.tiktok.com/@myfarmsight" target="_blank" aria-label="TikTok" class="fab fa-tiktok"></a>
+          <a href="https://x.com/myfarmsight" target="_blank" aria-label="X (formerly Twitter)" class="fab fa-x"></a>
+          <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" aria-label="YouTube" class="fab fa-youtube"></a>
+        </div>
+        
+        <!-- Newly added Privacy Link in footer-inner (footer-bottom section) -->
+        <div class="footer-extra-links">
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+
+        <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
