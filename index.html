@@ -230,11 +230,18 @@
       margin-bottom: 2rem;
       max-width: 480px;
     }
-    .hero-buttons {
+    /* .hero-buttons {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       align-items: center;
+    } */
+    .hero-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: nowrap;
     }
     .btn-primary {
       background: var(--green);
@@ -278,7 +285,7 @@
       margin-top: 1.5rem;
       align-items: center;
     }
-    .store-btn {
+    /* .store-btn {
       background: var(--gray-dark);
       color: #fff;
       padding: 10px 18px;
@@ -289,15 +296,28 @@
       text-decoration: none;
       transition: background .2s;
       font-size: 0.85rem;
-    }
+    } */
+    .store-btn {
+      background: var(--gray-dark);
+      color: #fff;
+      padding: 6px 26px;
+      border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: background .2s;
+      font-size: 0.85rem;
+   }
     .store-btn:hover {
       background: #000;
+      transform: translateY(-2px);
     }
     .store-btn strong {
       display: block;
       font-size: 0.95rem;
     }
-
     /* Hero visual */
     .hero-visual {
       display: flex;
@@ -432,37 +452,87 @@
       max-width: 580px;
     }
 
-    /* ── ABOUT SECTION (BESPOKE REDESIGN) ── */
+    /* ── ABOUT SECTION ── */
     .about-section {
-      background: #fafcfb; /* Extremely subtle organic tint */
       position: relative;
+      background:
+        radial-gradient(ellipse at 9% 12%, rgba(46, 204, 64, 0.08), transparent 28rem),
+        #f8fbf8;
+    }
+    .about-intro {
+      display: grid;
+      gap: 2.5rem;
+      align-items: center;
+      margin-bottom: 3.5rem;
     }
     .about-header {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto 3.5rem;
+      max-width: 620px;
+    }
+    .about-header .section-title {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      letter-spacing: -0.035em;
     }
     .about-lead-text {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       color: var(--gray);
       line-height: 1.8;
       margin-top: 1.2rem;
     }
+    .about-gallery {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-rows: repeat(2, minmax(120px, 1fr));
+      gap: 0.85rem;
+      min-height: 330px;
+      position: relative;
+    }
+    .about-photo {
+      min-width: 0;
+      min-height: 0;
+      overflow: hidden;
+      border-radius: 22px;
+      background: #e6f2e7;
+      box-shadow: 0 16px 36px rgba(34, 73, 39, 0.12);
+    }
+    .about-photo:first-child {
+      grid-row: 1 / 3;
+    }
+    .about-photo:last-child {
+      position: absolute;
+      left: 0.9rem;
+      bottom: 0.9rem;
+      width: 38%;
+      height: 34%;
+      border: 5px solid #f8fbf8;
+      box-shadow: 0 12px 28px rgba(34, 73, 39, 0.2);
+    }
+    .about-photo img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
     .about-bento {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
-    @media (min-width: 900px) {
+    @media (min-width: 700px) {
+      .about-gallery {
+        min-height: 410px;
+      }
       .about-bento {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(min-content, max-content);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
       }
       .bento-col-2 {
-        grid-column: span 2;
+        grid-column: span 1;
       }
-      .bento-row-2 {
-        grid-row: span 2;
+    }
+    @media (min-width: 900px) {
+      .about-intro {
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 4rem;
       }
     }
     .bento-card {
@@ -525,6 +595,13 @@
       overflow: hidden;
       margin-top: 1rem;
     }
+    .bento-highlight {
+      max-width: 850px;
+      width: 100%;
+      margin: 1rem auto 0;
+      padding: 2rem 1.5rem;
+      box-sizing: border-box;
+    }
     .bento-highlight::before {
       content: '';
       position: absolute;
@@ -557,7 +634,7 @@
       z-index: 2;
     }
     .bento-highlight h4 {
-      font-size: clamp(1.4rem, 3vw, 1.8rem);
+      font-size: clamp(1.2rem, 2vw, 1.4rem);
       font-weight: 900;
       color: #fff;
       font-family: 'Nunito', sans-serif;
@@ -682,50 +759,85 @@
     .how-section {
       background: linear-gradient(160deg, #f7fbf7 0%, #ffffff 100%);
     }
-    .steps {
+    .how-pathways {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 4rem;
-      position: relative;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
     }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 28px;
-      left: 12.5%;
-      right: 12.5%;
-      height: 2px;
+    .how-pathway {
+      padding: 2rem;
+      background: #fff;
+      border: 1px solid #e8f5e9;
+      border-radius: 24px;
+      box-shadow: 0 12px 35px rgba(31, 80, 38, 0.06);
+    }
+    .how-pathway-heading {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid #edf4ed;
+    }
+    .how-pathway-icon {
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
       background: var(--green-light);
-      z-index: 0;
-    }
-    .step {
-      text-align: center;
-      padding: 0 1.5rem;
-      position: relative;
-      z-index: 1;
-    }
-    .step-num {
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: var(--green);
-      color: #fff;
-      font-weight: 900;
-      font-size: 1.2rem;
-      font-family: 'Nunito', sans-serif;
+      color: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 1.2rem;
-      box-shadow: 0 6px 20px rgba(46, 204, 64, 0.35);
+      font-size: 1.2rem;
     }
-    .step h3 {
+    .how-pathway-heading h3 {
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+    .how-pathway-heading p {
+      margin-top: .2rem;
+      color: var(--gray);
+      font-size: .85rem;
+    }
+    .how-steps {
+      display: grid;
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .how-step {
+      display: grid;
+      grid-template-columns: 36px minmax(0, 1fr);
+      gap: 1rem;
+      position: relative;
+    }
+    .how-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 17px;
+      top: 36px;
+      bottom: -1.25rem;
+      width: 2px;
+      background: var(--green-light);
+    }
+    .how-step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--green-light);
+      color: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 900;
+    }
+    .how-step h4 {
+      margin: .15rem 0 .3rem;
+      font-size: .98rem;
       font-weight: 800;
-      font-size: 1rem;
-      margin-bottom: .5rem;
     }
-    .step p {
+    .how-step p {
       font-size: 0.85rem;
       color: var(--gray);
       line-height: 1.6;
@@ -813,10 +925,26 @@
       justify-content: center;
       align-items: center;
       gap: 1rem;
-      margin-top: 2rem;
+      margin-top: 3rem;
       font-family: 'Nunito', sans-serif;
       font-weight: 800;
       font-size: 1.1rem;
+    }
+    .yearly-discount {
+      display: none;
+      margin-left: .35rem;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      background: var(--green-light);
+      color: var(--green-dark);
+      font-size: .68rem;
+      font-weight: 800;
+      line-height: 1.4;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    .billing-toggle.is-yearly .yearly-discount {
+      display: inline-block;
     }
     .switch {
       position: relative;
@@ -862,7 +990,7 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.5rem;
       margin-top: 3.5rem;
       max-width: 1200px;
@@ -882,7 +1010,6 @@
       border-color: var(--green);
       background: var(--green);
       color: #fff;
-      transform: scale(1.04);
       box-shadow: 0 20px 60px rgba(46, 204, 64, 0.35);
       z-index: 2;
     }
@@ -1128,107 +1255,152 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #111;
-      color: #888;
-      padding: 2rem;
+      background: linear-gradient(145deg, #14251a 0%, #111 75%);
+      color: #b7c1b9;
+      padding: 3.5rem 2rem 1.5rem;
     }
     .footer-inner {
       max-width: 1200px;
       margin: 0 auto;
     }
-    .footer-grid {
+    .footer-main {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, .7fr);
+      align-items: start;
       gap: 3rem;
-      margin-bottom: 3rem;
+      padding-bottom: 2.25rem;
     }
     .footer-brand p {
-      font-size: 0.88rem;
-      line-height: 1.8;
+      font-size: 0.9rem;
+      line-height: 1.7;
       margin-top: .8rem;
-      max-width: 280px;
+      max-width: 320px;
     }
     .footer-logo {
-      height: 32px;
-      opacity: .8;
+      width: 142px;
+      max-width: 100%;
+      height: auto;
+      filter: brightness(0) invert(1);
     }
-    .footer-col h4 {
+    .footer-brand-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+    .footer-brand-actions .store-btn {
+      padding: 8px 14px;
+      font-size: .8rem;
+    }
+    .footer-brand-actions .store-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+    .footer-brand-actions .store-btn strong {
+      font-size: .85rem;
+    }
+    .footer-contact h3 {
       color: #fff;
-      font-weight: 700;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: .8rem;
       font-family: 'Nunito', sans-serif;
     }
-    .footer-col ul {
-      list-style: none;
+    .footer-contact-grid {
+      display: flex;
+      flex-direction: column;
     }
-    .footer-col ul li {
-      margin-bottom: .6rem;
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      min-width: 0;
+      padding: .8rem 0;
     }
-    .footer-col ul li a {
-      color: #888;
+    .footer-contact-icon {
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      color: var(--green);
+      background: rgba(46, 204, 64, .12);
+      border-radius: 50%;
+    }
+    .footer-contact-item h4 {
+      color: #8d9b91;
+      font: 700 .75rem 'Nunito', sans-serif;
+      margin: 0 0 .15rem;
+    }
+    .footer-contact-item a,
+    .footer-contact-item p {
+      color: #e0e6e1;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: .9rem;
+      line-height: 1.5;
+      overflow-wrap: anywhere;
+    }
+    .footer-contact-item a:hover {
+      color: var(--green);
+    }
+    .footer-social-column h3 {
+      color: #fff;
+      font: 800 1.1rem 'Nunito', sans-serif;
+      margin-bottom: .8rem;
+    }
+    .footer-socials {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      min-height: 44px;
+      padding: .45rem 0;
+      color: #e0e6e1;
+      text-decoration: none;
+      font-size: .9rem;
       transition: color .2s;
     }
-    .footer-col ul li a:hover {
+    .footer-socials a i {
+      width: 20px;
+      text-align: center;
+      color: #8d9b91;
+    }
+    .footer-socials a:hover,
+    .footer-socials a:hover i {
       color: var(--green);
     }
     .footer-bottom {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      gap: 1.25rem;
       font-size: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, .12);
     }
     .footer-stores {
       display: flex;
       gap: 1rem;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       flex-wrap: wrap;
     }
-    .footer-socials {
-      display: flex;
-      gap: 1.5rem;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: nowrap;
-    }
-    .footer-socials a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 1.5rem;
-      transition: color 0.3s ease, transform 0.2s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255, 255, 255, 0.05);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-    }
-    .footer-socials a:hover {
-      color: var(--green);
-      transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.1);
-    }
-    .footer-socials a:hover.fa-facebook { color: #1877F2; border-color: #1877F2; }
-    .footer-socials a:hover.fa-instagram { color: #E4405F; border-color: #E4405F; }
-    .footer-socials a:hover.fa-tiktok { color: #fff; border-color: #fff; }
-    .footer-socials a:hover.fa-x-twitter { color: #fff; border-color: #fff; }
-    .footer-socials a:hover.fa-youtube { color: #FF0000; border-color: #FF0000; }
-    
     .footer-extra-links {
       display: flex;
-      gap: 1.5rem;
+      flex-wrap: wrap;
+      gap: .5rem 1rem;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
     .footer-extra-links a {
       color: #aaa;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       transition: color .2s;
     }
     .footer-extra-links a:hover {
@@ -1236,8 +1408,9 @@
     }
     
     .copyright {
-      color: #666;
+      color: #8d9b91;
       text-align: center;
+      font-size: .78rem;
     }
 
     /* ── SCROLL TO TOP ── */
@@ -1283,7 +1456,12 @@
 
     @media (max-width: 1100px) {
       .pricing-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .pricing-grid > .price-card:last-child {
+        grid-column: 1 / -1;
+        width: min(100%, calc(50% - .75rem));
+        justify-self: center;
       }
       .price-card.popular {
         transform: none;
@@ -1307,14 +1485,12 @@
       .testimonials-grid {
         grid-template-columns: 1fr 1fr;
       }
-      .steps {
-        grid-template-columns: 1fr 1fr;
+      .how-pathways {
+        grid-template-columns: 1fr;
       }
-      .steps::before {
-        display: none;
-      }
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
+      .footer-main {
+        grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+        gap: 2rem;
       }
       /* Hide desktop nav links, show hamburger */
       .nav-links {
@@ -1329,30 +1505,67 @@
       .pricing-grid {
         grid-template-columns: 1fr;
       }
+      .pricing-grid > .price-card:last-child {
+        grid-column: auto;
+        width: auto;
+        max-width: none;
+        justify-self: stretch;
+      }
       .features-grid {
         grid-template-columns: 1fr;
       }
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
-      .steps {
-        grid-template-columns: 1fr;
+      .how-pathway {
+        padding: 1.5rem;
       }
-      /* Keep Store buttons on same line */
+      .footer-main {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+      .footer-bottom {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+      .footer-socials {
+        gap: 0;
+        align-items: flex-start;
+      }
+      .copyright {
+        text-align: center;
+      }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .hero-buttons > .btn-primary,
+      .hero-buttons > .store-btn {
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 320px;
+        height: 48px;
+        min-height: 48px;
+        justify-content: center;
+      }
+      .hero-buttons > .store-btn {
+        padding: 8px 18px;
+      }
+      .hero-buttons > .store-btn > div {
+        line-height: 1.1;
+      }
       .hero-stores, .footer-stores {
-        flex-wrap: nowrap;
+        flex-wrap: wrap;
         justify-content: center;
       }
       .store-btn {
-        padding: 8px 10px;
-        gap: 5px;
+        min-height: 44px;
+        padding: 8px 12px;
+        gap: 8px;
       }
       .store-btn svg {
-        width: 14px;
-        height: 14px;
-      }
-      .store-btn div span {
-        font-size: 0.55rem !important;
+        flex: 0 0 auto;
       }
       .store-btn strong {
         font-size: 0.8rem;
@@ -1404,7 +1617,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#how">How it works</a></li>
-      <li><a href="#testimonials">Stories</a></li>
+      <!-- <li><a href="#testimonials">Stories</a></li> -->
       <li><a href="#pricing">Pricing</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1442,15 +1655,6 @@
             </svg>
             See Features
           </a>
-        </div>
-        <div class="hero-stores">
-          <a href="#" class="store-btn">
-            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
-              <path
-                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.42.07 2.4.77 3.22.77.92 0 2.64-.95 4.44-.81 1.53.1 2.91.69 3.72 1.77-3.44 2.02-2.88 6.47.62 7.74-.46 1.3-1.05 2.59-4 3.39zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
-            </svg>
-            <div><span style="font-size:0.62rem; opacity:.7">Download on the</span><strong>App Store</strong></div>
-          </a>
           <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="store-btn">
             <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
               text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
@@ -1465,6 +1669,28 @@
             <div><span style="font-size:0.62rem; opacity:.7">Get it on</span><strong>Google Play</strong></div>
           </a>
         </div>
+        <div class="hero-stores">
+          <!-- <a href="#" class="store-btn">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24">
+              <path
+                d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.42c1.42.07 2.4.77 3.22.77.92 0 2.64-.95 4.44-.81 1.53.1 2.91.69 3.72 1.77-3.44 2.02-2.88 6.47.62 7.74-.46 1.3-1.05 2.59-4 3.39zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
+            </svg>
+            <div><span style="font-size:0.62rem; opacity:.7">Download on the</span><strong>App Store</strong></div>
+          </a> -->
+          <!-- <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="store-btn">
+            <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+              text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+              clip-rule="evenodd" viewBox="0 0 466 511.98">
+              <g id="Layer_x0020_1">
+                <path fill="#EA4335" fill-rule="nonzero" d="M199.9 237.8l-198.5 232.37c7.22,24.57 30.16,41.81 55.8,41.81 11.16,0 20.93,-2.79 29.3,-8.37l0 0 244.16 -139.46 -130.76 -126.35z" />
+                <path fill="#FBBC04" fill-rule="nonzero" d="M433.91 205.1l0 0 -104.65 -60 -111.61 110.22 113.01 108.83 104.64 -58.6c18.14,-9.77 30.7,-29.3 30.7,-50.23 -1.4,-20.93 -13.95,-40.46 -32.09,-50.22z" />
+                <path fill="#34A853" fill-rule="nonzero" d="M199.42 273.45l129.85 -128.35 -241.37 -136.73c-8.37,-5.58 -19.54,-8.37 -30.7,-8.37 -26.5,0 -50.22,18.14 -55.8,41.86 0,0 0,0 0,0l198.02 231.59z" />
+                <path fill="#4285F4" fill-rule="nonzero" d="M1.39 41.86c-1.39,4.18 -1.39,9.77 -1.39,15.34l0 397.64c0,5.57 0,9.76 1.4,15.34l216.27 -214.86 -216.28 -213.46z" />
+              </g>
+            </svg>
+            <div><span style="font-size:0.62rem; opacity:.7">Get it on</span><strong>Google Play</strong></div>
+          </a> -->
+        </div>
       </div>
 
       <!-- Phone Mockup -->
@@ -1475,7 +1701,7 @@
               <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_3.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+1'"></div>
               <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_6.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+2'"></div>
               <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_5.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+3'"></div>
-              <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_4.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+4'"></div>
+              <!-- <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_4.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+4'"></div> -->
               <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_1.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+5'"></div>
               <div class="swiper-slide phone-mockup"><img src="./images/mockup2-pngArtboard-1_2.png" onerror="this.src='https://placehold.co/250x650/111/fff?text=Mockup+6'"></div>
             </div>
@@ -1509,13 +1735,30 @@
     </div>
   </section>
 
-  <!-- ── ABOUT US (BESPOKE) ── -->
+  <!-- ── ABOUT US ── -->
   <section class="about-section" id="about">
     <div class="section-inner">
-      <div class="about-header">
-        <span class="section-tag">About Us</span>
-        <h2 class="section-title">MyFarmSight is a complete ecosystem for poultry farmers.</h2>
-        <p class="about-lead-text"><strong>MyFarmSight</strong> is a product developed by SIAGROPAT LIMITED. A company focused on revolutionising agricultural practice through a simple, innovative farming approach.</p>
+      <div class="about-intro">
+        <div class="about-header">
+          <span class="section-tag">About Us</span>
+          <h2 class="section-title">MyFarmSight is a complete ecosystem for poultry farmers.</h2>
+          <p class="about-lead-text"><strong>MyFarmSight</strong> is a product developed by SIAGROPAT LIMITED. A company focused on revolutionising agricultural practice through a simple, innovative farming approach.</p>
+        </div>
+
+        <div class="about-gallery" aria-hidden="true">
+          <figure class="about-photo">
+            <img src="./images/Modern poultry rows with hens and eggs.png" alt="" loading="lazy">
+          </figure>
+          <figure class="about-photo">
+            <img src="./images/Picture 13.png" alt="" loading="lazy">
+          </figure>
+          <figure class="about-photo">
+            <img src="./images/Picture 15.png" alt="" loading="lazy">
+          </figure>
+          <figure class="about-photo">
+            <img src="./images/Picture12.png" alt="" loading="lazy">
+          </figure>
+        </div>
       </div>
 
       <div class="about-bento">
@@ -1527,11 +1770,11 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="bento-card bento-row-2 bg-tint">
+        <!-- <div class="bento-card bento-row-2 bg-tint">
           <div class="bento-icon"><i class="fa-solid fa-book-open-reader"></i></div>
           <h3>Continuous Staff Development</h3>
           <p>In addition, the platform includes a built-in staff training model that supports continuous learning and skill development. The quality of work delivered by farm staff is directly proportional to their understanding of the job, so ongoing training helps improve performance, reduce errors, and strengthen overall farm outcomes.</p>
-        </div>
+        </div> -->
 
         <!-- Card 3 -->
         <div class="bento-card bento-col-2">
@@ -1567,13 +1810,13 @@
             <div class="stat-strip-card">
               <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
               <h3>Increase Profitability</h3>
-              <p>Track inflow and outflow of money. Know your exact cost per bird, batch profitability, and where your money is going - in real time.</p>
+              <p>Track inflow and outflow of money. Know your exact cost per bird, batch profitability, and where your money is going in real time.</p>
             </div>
             
             <div class="stat-strip-card">
               <div class="icon-box"><i class="fa-solid fa-user-doctor"></i></div>
               <h3>Vet at Your Fingertips</h3>
-              <p>Discover verified vets near your farm. Chat in real time, request consultations, and get professional guidance without leaving the app.</p>
+              <p>Discover verified vets near your farm. Chat in real time, request consultations, and get professional guidance without leaving the app. Earn while you provide your service.</p>
             </div>
             
             <div class="stat-strip-card">
@@ -1582,7 +1825,7 @@
               <p>The staff personalised platform enable performance tracking, ensure your team is always accountable, and your farm is protected.</p>
             </div>
             
-            <div class="stat-strip-card">
+            <div class="stat-strip-card"> 
               <div class="icon-box"><i class="fa-solid fa-mobile-screen-button"></i></div>
               <h3>Manage from Anywhere</h3>
               <p>Monitor all operations remotely. Whether you're on-site or in Lagos, real-time dashboards keep you connected to every corner of your farm.</p>
@@ -1601,8 +1844,7 @@
         <span class="section-tag">Platform Features</span>
         <h2 class="section-title" style="max-width:600px; margin:0 auto 1rem;">Everything You Need to Run a Profitable
           Farm</h2>
-        <p class="section-sub" style="margin:0 auto; text-align:center;">From daily operations to professional
-          networking — MyFarmSight covers every inch of your farm management needs.</p>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">From daily operations to professional networking, MyFarmSight covers every inch of your farm management needs.</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
@@ -1610,14 +1852,12 @@
             <img src="./images/dashboard.png" alt="Dashboard Icon" style="width:24px; height:24px;" onerror="this.src='https://placehold.co/24x24/d4f5d8/1fa32e?text=DB'">
           </div>
           <h3>Real-Time Dashboard</h3>
-          <p>Monitor daily operations live — livestock counts, mortality, production, and income — all visualized in
-            intuitive infographics updated in real time.</p>
+          <p>Monitor daily operations live, including livestock counts, mortality, production, and income, all visualized in intuitive infographics updated in real time.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">💰</div>
           <h3>Financial Management</h3>
-          <p>Track stocking costs, feed expenses, sales revenue, and weekly/monthly summaries. Know exactly how
-            profitable every batch is.</p>
+          <p>Track stocking costs, feed expenses, sales revenue, and weekly/monthly summaries. Know exactly how profitable every batch is.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">
@@ -1632,22 +1872,22 @@
             <img src="./images/pill.png" alt="Health Icon" style="width:24px; height:24px;" onerror="this.src='https://placehold.co/24x24/d4f5d8/1fa32e?text=MD'">
           </div>
           <h3>Health & Medication Records</h3>
-          <p>Maintain a complete sick bay log — medication administration, isolation records, and vet consultations.
+          <p>Maintain a complete sick bay log, medication administration, isolation records, and vet consultations.
             Never miss a treatment cycle again.</p>
         </div>
         <div class="feature-card">
           <div class="feat-icon">
             <img src="./images/people.png" alt="Staff Icon" style="width:24px; height:24px;" onerror="this.src='https://placehold.co/24x24/d4f5d8/1fa32e?text=ST'">
           </div>
-          <h3>Staff Management & NIN Verify</h3>
-          <p>Collect staff bio-data, guarantor info, and next-of-kin digitally. For Nigerian users, NIN verification ensures every team member is accountable and trusted.</p>
+          <h3>Staff Management Verification</h3>
+          <p>Collect staff bio-data, guarantor info, and next-of-kin digitally. Identity verification helps ensure every team member is accountable, verified, and trusted.</p>
         </div>
-        <div class="feature-card">
+        <!-- <div class="feature-card">
           <div class="feat-icon">📍</div>
           <h3>Location-Based Pro Network</h3>
           <p>Discover verified veterinarians near you. Chat in real time, request
             consultations, and leave reviews — all within the app.</p>
-        </div>
+        </div> -->
         <div class="feature-card">
           <div class="feat-icon">
             <img src="./images/analytics.png" alt="Analytics Icon" style="width:24px; height:24px;" onerror="this.src='https://placehold.co/24x24/d4f5d8/1fa32e?text=AN'">
@@ -1665,8 +1905,7 @@
         <div class="feature-card">
           <div class="feat-icon">🔔</div>
           <h3>Smart Alerts & Reminders</h3>
-          <p>Automated alerts for feed reorders, tank cleaning, medication schedules, staff birthdays, and follow-up
-            visits — nothing slips through the cracks.</p>
+          <p> Automated alerts for feed reorders, tank cleaning and litter pushing so nothing slips through the cracks.</p>
         </div>
       </div>
     </div>
@@ -1677,41 +1916,110 @@
     <div class="section-inner">
       <div style="text-align:center;">
         <span class="section-tag">How It Works</span>
-        <h2 class="section-title">Up and Running in Minutes</h2>
-        <p class="section-sub" style="margin:0 auto; text-align:center;">MyFarmSight is designed to be simple enough for
-          any farmer, powerful enough for enterprise operations.</p>
+        <h2 class="section-title">A Clear Path for Every Professional</h2>
+        <p class="section-sub" style="margin:0 auto; text-align:center;">Whether you manage a farm or provide veterinary
+          care, MyFarmSight gives you the tools to get started and grow.</p>
       </div>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Create Your Account</h3>
-          <p>Sign up as a farmer or agricultural professional. Verify your identity and set up your farm profile in
-            minutes.</p>
+      <div class="how-pathways">
+        <div class="how-pathway">
+          <div class="how-pathway-heading">
+            <div class="how-pathway-icon"><i class="fa-solid fa-tractor" aria-hidden="true"></i></div>
+            <div>
+              <h3>For Farmers</h3>
+              <p>Organize your farm and make informed decisions.</p>
+            </div>
+          </div>
+          <div class="how-steps">
+            <div class="how-step">
+              <div class="how-step-num">1</div>
+              <div>
+                <h4>Create your account</h4>
+                <p>Sign up as a farmer or agricultural professional. Verify your identity and set up your farm profile in minutes.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">2</div>
+              <div>
+                <h4>Create your Animal House</h4>
+                <p>Create and organize animal houses for easy tracking and management.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">3</div>
+              <div>
+                <h4>Add Your Livestock</h4>
+                <p>Record the poultry batches and add your staff.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">4</div>
+              <div>
+                <h4>Track Daily activities</h4>
+                <p>Log feed, water, production, health, and farm finances.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">5</div>
+              <div>
+                <h4>Grow with Data</h4>
+                <p>Use analytics, access to veterinarian to continuously gain insights to improve and scale your farm.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Add Your Livestock</h3>
-          <p>Record the poultry batches. Add your staff with digital data and NIN verification and assign staff.
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Track Daily Activities</h3>
-          <p>Log feed, water, production, health status, and financials each day. The dashboard updates automatically.
-          </p>
-        </div>
-        <div class="step">
-          <div class="step-num">4</div>
-          <h3>Grow with Data</h3>
-          <p>Use analytics, professional connections, and gain insights to continuously improve and scale your
-            farm.</p>
+
+        <div class="how-pathway">
+          <div class="how-pathway-heading">
+            <div class="how-pathway-icon"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
+            <div>
+              <h3>For Veterinarians</h3>
+              <p>Reach farmers and deliver professional care.</p>
+            </div>
+          </div>
+          <div class="how-steps">
+            <div class="how-step">
+              <div class="how-step-num">1</div>
+              <div>
+                <h4>Set up your account</h4>
+                <p>Create your veterinarian account on MyFarmSight.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">2</div>
+              <div>
+                <h4>Register your business information</h4>
+                <p>Add your business details to your profile.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">3</div>
+              <div>
+                <h4>Describe your expertise</h4>
+                <p>Give a brief description of your expertise so farmers can learn more about you.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">4</div>
+              <div>
+                <h4>Verify your VCN number</h4>
+                <p>Verify your Veterinary Council of Nigeria (VCN) number.</p>
+              </div>
+            </div>
+            <div class="how-step">
+              <div class="how-step-num">5</div>
+              <div>
+                <h4>Offer your services</h4>
+                <p>Offer your services to farmers and start earning.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── TESTIMONIALS ── -->
-  <section class="testimonials-section" id="testimonials">
+  <!-- <section class="testimonials-section" id="testimonials">
     <div class="section-inner">
       <span class="section-tag">Success Stories</span>
       <h2 class="section-title">Farmers Thriving with MyFarmSight</h2>
@@ -1791,7 +2099,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- ── PRICING ── -->
   <section class="pricing-section" id="pricing">
@@ -1809,22 +2117,21 @@
             <input type="checkbox" id="billingSwitch">
             <span class="slider round"></span>
           </label>
-          <span id="yearlyBtn" style="color: var(--gray);">Yearly</span>
+          <span id="yearlyBtn" style="color: var(--gray);">Yearly <span class="yearly-discount">Save 20%</span></span>
         </div>
       </div>
       
       <div class="pricing-grid">
         <!-- Free Plan -->
         <div class="price-card">
-          <div class="plan-name">Free Plan</div>
-          <div class="plan-price"><span class="amount" data-monthly="Free" data-yearly="Free">0</span></div>
+          <div class="plan-name">Basic Plan</div>
+          <div class="plan-price"><span class="amount" data-monthly="Free" data-yearly="Free">₦0</span></div>
           <div class="plan-period"><span class="period-text" data-monthly="Forever" data-yearly="Forever">Forever</span></div>
           <ul class="plan-features">
-            <li>Limited access to farm management</li>
-            <li>1 farm, 1 batch</li>
-            <li>Basic production tracking</li>
-            <li>Financial summary</li>
-            <li>Email alerts</li>
+            <li>Farm and livestock setup</li>
+            <li>Create a Farm/animal house (limited to only one)</li>
+            <li>Create a batch (limited to only one)</li>
+            <li>Feed and nutrition management including add feed stock and add feed consumption</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-outline">Get Started</a>
         </div>
@@ -1835,37 +2142,51 @@
           <div class="plan-price"><span class="amount" data-monthly="₦12,500" data-yearly="₦120,000">₦12,500</span></div>
           <div class="plan-period"><span class="period-text" data-monthly="per month" data-yearly="per year">per month</span></div>
           <ul class="plan-features">
-            <li>Access to farm management</li>
-            <li>Access to Veterinary</li>
-            <li>Access to watch just 2 modules</li>
-            <li>Unlimited animals</li>
-            <li>Feed & water monitoring</li>
-            <li>Health & medication records</li>
-            <li>Basic support</li>
+            <li>Farm and livestock setup (Can add up to 2 animal houses and 2 batches)</li>
+            <li>Feed and nutrition management</li>
+            <li>Water management</li>
+            <li>Health and Biosecurity</li>
+            <li>Production and Output tracking</li>
+            <li>Sales and Consumer Records</li>
+            <li>Housekeeping and farm management</li>
+            <li>Environmental monitoring</li>
+            <li>Financial Management</li>
+            <li>Operational and compliance checks</li>
+            <li>Staff verification</li>
+            <li>Flock/laying cycle overview</li>
+            <li>Weekly summary and all reports</li>
+            <li>Access to Veterinary platform (Limited access)</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-outline">Start Trial</a>
         </div>
 
         <!-- Advanced Plan -->
         <div class="price-card popular">
-          <span class="popular-badge">Most Popular</span>
+          <!-- <span class="popular-badge">Most Popular</span> -->
           <div class="plan-name">Advanced Plan</div>
           <div class="plan-price"><span class="amount" data-monthly="₦20,000" data-yearly="₦200,000">₦20,000</span></div>
           <div class="plan-period"><span class="period-text" data-monthly="per month" data-yearly="per year">per month</span></div>
           <ul class="plan-features">
-            <li>All Standard features</li>
-            <li>Access to E-learn</li>
-            <li>All Standard features</li>
-            <li>Full financial management</li>
-            <li>Staff NIN verification</li>
-            <li>Access to Pro Network</li>
-            <li>Analytics dashboards</li>
+            <li>Farm and livestock setup (Can add up to 5 animal houses and 5 batches)</li>
+            <li>Feed and nutrition management</li>
+            <li>Water management</li>
+            <li>Health and Biosecurity</li>
+            <li>Production and Output tracking</li>
+            <li>Sales and Consumer Records</li>
+            <li>Housekeeping and farm management</li>
+            <li>Environmental monitoring</li>
+            <li>Financial Management</li>
+            <li>Operational and compliance checks</li>
+            <li>Staff verification</li>
+            <li>Flock/laying cycle overview</li>
+            <li>Weekly summary and all reports</li>
+            <li>Access to Veterinary platform (Full access)</li>
           </ul>
           <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-white">Start Trial</a>
         </div>
 
         <!-- Custom Plan -->
-        <div class="price-card">
+        <!-- <div class="price-card">
           <div class="plan-name">Custom Plan</div>
           <div class="plan-price"><span class="amount" data-monthly="Custom" data-yearly="Custom">Custom</span></div>
           <div class="plan-period"><span class="period-text" data-monthly="Contact sales" data-yearly="Contact sales">Contact sales</span></div>
@@ -1877,7 +2198,7 @@
             <li>Dedicated manager</li>
           </ul>
           <button onclick="openModal()" class="plan-btn plan-btn-outline" style="width: 100%; cursor: pointer; background: transparent;">Contact Sales</button>
-        </div>
+        </div> -->
       </div>
     </div>
   </section>
@@ -1924,6 +2245,77 @@
   <!-- ── FOOTER ── -->
   <footer>
     <div class="footer-inner">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="./images/my-farm-sight-logo.svg" alt="MyFarmSight" class="footer-logo">
+          <p>Smart tools and professional connections to help farmers grow with confidence.</p>
+          <div class="footer-brand-actions">
+            <div class="footer-stores">
+              <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" rel="noopener noreferrer" class="store-btn">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision"
+                  text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd"
+                  clip-rule="evenodd" viewBox="0 0 466 511.98" aria-hidden="true">
+                  <g id="Layer_x0020_1">
+                    <path fill="#EA4335" fill-rule="nonzero" d="M199.9 237.8l-198.5 232.37c7.22,24.57 30.16,41.81 55.8,41.81 11.16,0 20.93,-2.79 29.3,-8.37l0 0 244.16 -139.46 -130.76 -126.35z" />
+                    <path fill="#FBBC04" fill-rule="nonzero" d="M433.91 205.1l0 0 -104.65 -60 -111.61 110.22 113.01 108.83 104.64 -58.6c18.14,-9.77 30.7,-29.3 30.7,-50.23 -1.4,-20.93 -13.95,-40.46 -32.09,-50.22z" />
+                    <path fill="#34A853" fill-rule="nonzero" d="M199.42 273.45l129.85 -128.35 -241.37 -136.73c-8.37,-5.58 -19.54,-8.37 -30.7,-8.37 -26.5,0 -50.22,18.14 -55.8,41.86 0,0 0,0 0,0l198.02 231.59z" />
+                    <path fill="#4285F4" fill-rule="nonzero" d="M1.39 41.86c-1.39,4.18 -1.39,9.77 -1.39,15.34l0 397.64c0,5.57 0,9.76 1.4,15.34l216.27 -214.86 -216.28 -213.46z" />
+                  </g>
+                </svg>
+                <div><span>Get it on</span><strong>Google Play</strong></div>
+              </a>
+            </div>
+            <div class="footer-extra-links">
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="terms.html">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h3>Get in touch</h3>
+          <div class="footer-contact-grid">
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:support@myfarmsight.com">support@myfarmsight.com</a>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <div>
+                <h4>Phone</h4>
+                <a href="tel:+2349157908725">+234 915 790 8725</a>
+              </div>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div>
+                <h4>Temporary office address</h4>
+                <!-- <p>12 Example Street, Ikeja, Lagos, Nigeria</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-social-column">
+          <h3>Follow us</h3>
+          <div class="footer-socials">
+            <a href="https://web.facebook.com/profile.php?id=61583886656196" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook" aria-hidden="true"></i>Facebook</a>
+            <a href="https://www.instagram.com/myfarmsight/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
+            <a href="https://www.tiktok.com/@myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</a>
+            <a href="https://x.com/myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a>
+            <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+ <!-- <footer>
+    <div class="footer-inner">
       <div class="footer-bottom">
         <div class="footer-stores">
           <a href="#" class="store-btn">
@@ -1955,8 +2347,7 @@
           <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" aria-label="YouTube" class="fab fa-youtube"></a>
         </div>
         
-        <!-- Newly added Privacy Link in footer-inner (footer-bottom section) -->
-        <div class="footer-extra-links">
+        <!-- <div class="footer-extra-links">
           <a href="privacy.html">Privacy Policy</a>
           <a href="#">Terms of Service</a>
         </div>
@@ -1964,7 +2355,7 @@
         <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
     </div>
   </div>
-</footer>
+</footer> -->
 
 <!-- ── SCROLL TO TOP BUTTON ── -->
 <button id="scrollTopBtn" aria-label="Go to top">
@@ -2032,6 +2423,7 @@
         
         monthlyBtn.style.color = isYearly ? 'var(--gray)' : 'var(--gray-dark)';
         yearlyBtn.style.color = isYearly ? 'var(--gray-dark)' : 'var(--gray)';
+        this.closest('.billing-toggle').classList.toggle('is-yearly', isYearly);
 
         priceAmounts.forEach(el => {
           el.textContent = isYearly ? el.dataset.yearly : el.dataset.monthly;

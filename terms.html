@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terms of Service for the MyFarmSight mobile application and platform operated by SIAGROPAT LIMITED.">
+  <title>Terms of Service — MyFarmSight</title>
+  <link rel="icon" type="image/svg+xml" href="icon.png">
+  <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <style>
+    :root {
+      --green: #2ecc40;
+      --green-dark: #1fa32e;
+      --green-light: #d4f5d8;
+      --ink: #0e1a0f;
+      --muted: #5a5a5a;
+      --border: #e8f5e9;
+      --paper: #f7fbf7;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 140px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #2d2d2d;
+      background: #fff;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    h1, h2, h3, .brand { font-family: 'Nunito', sans-serif; }
+    a { color: var(--green-dark); }
+
+    nav.main-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      padding: 0 2rem;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.96);
+      backdrop-filter: blur(12px);
+    }
+    .nav-logo { display: flex; align-items: center; }
+    .nav-logo img { display: block; height: 36px; width: auto; max-width: 46vw; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      font-size: .9rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .nav-links a:hover { color: var(--green); }
+    .nav-home {
+      padding: 10px 20px;
+      border-radius: 999px;
+      background: var(--green);
+      color: #fff;
+      font-size: .9rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-home:hover { background: var(--green-dark); }
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--green-dark) 0%, var(--green) 50%, #5bd96c 100%);
+      position: relative;
+      overflow: hidden;
+      padding: 0;
+      margin-top: 70px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(255,255,255,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 40% 40% at 10% 80%, rgba(0,0,0,0.08) 0%, transparent 60%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 40px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 32px;
+      padding: 6px 18px;
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 100px;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font: 700 .78rem 'Nunito', sans-serif;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      backdrop-filter: blur(6px);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero p {
+      max-width: 560px;
+      margin-bottom: 36px;
+      color: rgba(255,255,255,0.9);
+      font-size: 1.1rem;
+      font-weight: 400;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.9);
+      font-size: .88rem;
+      font-weight: 500;
+    }
+
+    .contents {
+      position: sticky;
+      top: 70px;
+      z-index: 5;
+      border-bottom: 1px solid var(--border);
+      background: #fff;
+      box-shadow: 0 5px 18px rgba(27, 55, 33, .04);
+    }
+    .contents-inner {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      width: min(100%, 1160px);
+      margin: 0 auto;
+      padding: 0 20px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .contents-inner::-webkit-scrollbar { display: none; }
+    .contents-label {
+      flex: 0 0 auto;
+      padding: 13px 14px 13px 0;
+      color: var(--green-dark);
+      font-family: 'Nunito', sans-serif;
+      font-weight: 800;
+    }
+    .contents a {
+      flex: 0 0 auto;
+      padding: 13px 10px;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
+      font-size: .85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .contents a:hover { border-bottom-color: var(--green); color: var(--green-dark); }
+
+    .page-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 32px 100px;
+      display: grid;
+      grid-template-columns: 240px minmax(0, 1fr);
+      gap: 60px;
+      align-items: start;
+    }
+    .sidebar { position: sticky; top: 150px; }
+    .sidebar-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.02);
+    }
+    .sidebar-label {
+      margin-bottom: 14px;
+      color: var(--muted);
+      font: 700 .75rem 'Nunito', sans-serif;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+    .sidebar-nav a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 -10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      color: #2d2d2d;
+      font-size: .85rem;
+      text-decoration: none;
+      transition: background .15s, color .15s;
+    }
+    .sidebar-nav a:hover { background: var(--green-light); color: var(--green-dark); }
+    .sidebar-nav .dot {
+      width: 6px;
+      height: 6px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: #d1d5db;
+    }
+    .sidebar-nav a:hover .dot { background: var(--green); }
+    .contact-card {
+      border: 0;
+      background: linear-gradient(135deg, var(--green-dark), var(--green));
+      color: #fff;
+    }
+    .contact-card .sidebar-label { color: rgba(255,255,255,.7); }
+    .contact-card p { margin-bottom: 14px; color: rgba(255,255,255,.9); font-size: .85rem; line-height: 1.6; }
+    .contact-card a {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 100px;
+      background: #fff;
+      color: var(--green-dark);
+      font-size: .85rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .content { min-width: 0; }
+    .terms-section {
+      margin: 0 0 64px;
+      scroll-margin-top: 140px;
+    }
+    .section-heading {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .section-number {
+      flex: 0 0 auto;
+      padding-top: 3px;
+      color: var(--green-light);
+      font: 900 2.2rem/1 'Nunito', sans-serif;
+    }
+    .section-heading h2 {
+      margin: 0;
+      color: #2d2d2d;
+      font-size: 1.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .terms-section > :not(.section-heading) { margin-left: 56px; }
+    .terms-section p { margin-bottom: 16px; color: var(--muted); }
+    .terms-section h3 {
+      margin-top: 24px;
+      margin-bottom: 12px;
+      color: var(--green-dark);
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+    .terms-section strong { color: var(--ink); }
+    .terms-list {
+      list-style: none;
+      margin: 8px 0 18px 56px;
+      padding: 0;
+      color: var(--muted);
+    }
+    .terms-section > .terms-list {
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .feature-group {
+      margin: 8px 0 18px 56px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+    }
+    .feature-group h3 { margin-top: 0; }
+    .feature-group > .terms-list { margin: 0; }
+    .terms-list .terms-list { margin: 4px 0 0; }
+    .terms-list li {
+      display: block;
+      position: relative;
+      padding: 8px 0 8px 18px;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .95rem;
+    }
+    .terms-list li:last-child { border-bottom: none; }
+    .terms-list li::before {
+      content: '';
+      position: absolute;
+      top: 18px;
+      left: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+    .terms-list-alpha { list-style: lower-alpha; padding-left: 24px; }
+    .terms-list-alpha > li {
+      display: list-item;
+      position: static;
+      padding: 8px 0;
+    }
+    .terms-list-alpha > li::marker { color: var(--green-dark); }
+    .terms-list-alpha > li::before { content: none; }
+    .closing {
+      padding: 22px 24px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: var(--paper);
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 3.5rem 2rem 1.5rem;
+      background: linear-gradient(145deg, #14251a 0%, #111 75%);
+      color: #b7c1b9;
+    }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-main {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, .7fr);
+      align-items: start;
+      gap: 3rem;
+      padding-bottom: 2.25rem;
+    }
+    .footer-brand p { max-width: 320px; margin-top: .8rem; font-size: .9rem; line-height: 1.7; }
+    .footer-logo { width: 142px; max-width: 100%; height: auto; filter: brightness(0) invert(1); }
+    .footer-brand-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-top: 3rem; }
+    .footer-stores { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+    .store-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 8px 14px;
+      border-radius: 50px;
+      background: #2d2d2d;
+      color: #fff;
+      font-size: .8rem;
+      text-decoration: none;
+    }
+    .store-btn svg { flex: 0 0 auto; width: 16px; height: 18px; }
+    .store-btn span { font-size: .62rem; opacity: .7; }
+    .store-btn strong { display: block; font-size: .85rem; }
+    .footer-extra-links { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem 1rem; }
+    .footer-extra-links a { color: #aaa; font-size: .78rem; text-decoration: none; }
+    .footer-extra-links a:hover { color: var(--green); }
+    .footer-contact h3, .footer-social-column h3 {
+      margin-bottom: .8rem;
+      color: #fff;
+      font: 800 1.1rem 'Nunito', sans-serif;
+    }
+    .footer-contact-grid { display: flex; flex-direction: column; }
+    .footer-contact-item { display: flex; align-items: center; gap: 1rem; min-width: 0; padding: .8rem 0; }
+    .footer-contact-icon {
+      display: grid;
+      flex: 0 0 38px;
+      width: 38px;
+      height: 38px;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(46,204,64,.12);
+      color: var(--green);
+    }
+    .footer-contact-item h4 { margin: 0 0 .15rem; color: #8d9b91; font: 700 .75rem 'Nunito', sans-serif; }
+    .footer-contact-item a, .footer-contact-item p {
+      color: #e0e6e1;
+      font-size: .9rem;
+      line-height: 1.5;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .footer-socials { display: flex; flex-direction: column; }
+    .footer-socials a {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      min-height: 44px;
+      padding: .45rem 0;
+      color: #e0e6e1;
+      font-size: .9rem;
+      text-decoration: none;
+    }
+    .footer-socials a i { width: 20px; color: #8d9b91; text-align: center; }
+    .footer-socials a:hover, .footer-socials a:hover i { color: var(--green); }
+    .footer-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+      font-size: .85rem;
+    }
+    .copyright { color: #8d9b91; text-align: center; font-size: .78rem; }
+
+    @media (max-width: 780px) {
+      .page-wrap { grid-template-columns: 1fr; gap: 40px; padding: 40px 20px 60px; }
+      .sidebar { position: static; display: none; }
+      .hero-inner { padding: 64px 24px 56px; }
+      .terms-section > :not(.section-heading), .terms-list { margin-left: 0; }
+      .section-number { display: none; }
+      .contents-inner { padding: 0 14px; }
+      .hero-meta { gap: 16px; }
+    }
+    @media (max-width: 900px) {
+      .footer-main { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .footer-main { grid-template-columns: 1fr; gap: 1.5rem; }
+      .footer-brand-actions { margin-top: 2rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="main-nav" aria-label="Main navigation">
+    <div class="nav-logo">
+      <a href="/">
+        <img src="./images/my-farm-sight-logo.svg" alt="MyFarmSight Logo">
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/#features">Features</a></li>
+      <li><a href="/#how">How it works</a></li>
+      <li><a href="/#testimonials">Stories</a></li>
+      <li><a href="/#pricing">Pricing</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+    <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" rel="noopener noreferrer" class="nav-home">Get Started Free</a>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Terms of Service Introduction
+      </div>
+      <h1>Terms of Service</h1>
+      <p class="hero-operator">These terms outline the rules and guidelines for using MyFarmSight. Here's everything you need to know about using our platform responsibly and effectively.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Effective Date: 31st October, 2026
+        </div>
+        <div class="hero-meta-item">
+          <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Last Updated: 31st October,2026
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav class="contents" aria-label="Quick navigation">
+    <div class="contents-inner">
+      <span class="contents-label">Contents</span>
+      <a href="#introduction">Introduction</a>
+      <a href="#about">About MyFarmSight</a>
+      <a href="#eligibility">Eligibility</a>
+      <a href="#registration">Account Registration</a>
+      <a href="#users">Types of Users</a>
+      <a href="#acceptable-use">Acceptable Use</a>
+      <a href="#farm-data">Farm Data</a>
+      <a href="#deletion">Data Deletion</a>
+      <a href="#agricultural-information">Agricultural Information</a>
+      <a href="#veterinarians">Veterinarian Services</a>
+      <a href="#subscriptions">Subscriptions</a>
+      <a href="#third-party">Third Parties</a>
+      <a href="#intellectual-property">Intellectual Property</a>
+      <a href="#availability">Service Availability</a>
+      <a href="#liability">Liability</a>
+      <a href="#termination">Termination</a>
+      <a href="#changes">Changes</a>
+      <a href="#governing-law">Governing Law</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+
+  <div class="page-wrap">
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-label">On this page</div>
+        <nav class="sidebar-nav" aria-label="Terms sections">
+          <a href="#introduction"><span class="dot"></span>Introduction</a>
+          <a href="#about"><span class="dot"></span>About MyFarmSight</a>
+          <a href="#eligibility"><span class="dot"></span>Eligibility</a>
+          <a href="#registration"><span class="dot"></span>Account Registration</a>
+          <a href="#users"><span class="dot"></span>Types of Users</a>
+          <a href="#acceptable-use"><span class="dot"></span>Acceptable Use</a>
+          <a href="#farm-data"><span class="dot"></span>Farm Data</a>
+          <a href="#deletion"><span class="dot"></span>Account &amp; Data Deletion</a>
+          <a href="#agricultural-information"><span class="dot"></span>Agricultural Information</a>
+          <a href="#veterinarians"><span class="dot"></span>Veterinarian Services</a>
+          <a href="#subscriptions"><span class="dot"></span>Subscriptions</a>
+          <a href="#third-party"><span class="dot"></span>Third-Party Services</a>
+          <a href="#intellectual-property"><span class="dot"></span>Intellectual Property</a>
+          <a href="#availability"><span class="dot"></span>Service Availability</a>
+          <a href="#liability"><span class="dot"></span>Limitation of Liability</a>
+          <a href="#termination"><span class="dot"></span>Suspension &amp; Termination</a>
+          <a href="#changes"><span class="dot"></span>Changes to These Terms</a>
+          <a href="#governing-law"><span class="dot"></span>Governing Law</a>
+          <a href="#contact"><span class="dot"></span>Contact Us</a>
+        </nav>
+      </div>
+      <div class="sidebar-card contact-card">
+        <div class="sidebar-label">Questions?</div>
+        <p>Questions, complaints or enquiries concerning these Terms may be submitted to us.</p>
+        <a href="mailto:support@myfarmsight.com">✉ Email Us</a>
+      </div>
+    </aside>
+
+    <main class="content">
+    <section class="terms-section" id="introduction">
+      <div class="section-heading"><span class="section-number">01</span><h2>Introduction</h2></div>
+      <p>Welcome to <strong>MyFarmSight</strong>, a digital farm management platform operated by <strong>SIAGROPAT LIMITED</strong> ("SIAGROPAT", "we", "us", or "our").</p>
+      <p>These Terms of Service ("Terms") govern your access to and use of the MyFarmSight mobile application, website, services, features and related platforms (collectively referred to as the "Service").</p>
+      <p>By creating an account, accessing or using MyFarmSight, you acknowledge that you have read, understood and agree to be bound by these Terms.</p>
+      <p>If you do not agree with these Terms, you should not use the Service.</p>
+    </section>
+
+    <section class="terms-section" id="about">
+      <div class="section-heading"><span class="section-number">02</span><h2>About MyFarmSight</h2></div>
+      <p>MyFarmSight is the all-in-one poultry management platform designed around the real challenges layer farmers face every day. Track your flock, connect with a local veterinarian in seconds, and has a built-in staff training that fosters continuous learning and skill enhancement. Everything your farm needs lives in one powerful platform. We are a complete ecosystem.</p>
+      <h3>Key features</h3>
+      <div class="feature-group">
+        <h3>2.1 Flock management system</h3>
+        <ul class="terms-list terms-list-alpha">
+          <li>Farmer or farmer-owner and farm staff interface
+          <li>Create an account and onboard seamlessly</li>
+          <li>Add a batch and assign staff</li>
+          <li>Track daily activities such as:
+                <ul class="terms-list">
+                  <li>Egg production recording and analysis</li>
+                  <li>Feed and water consumption monitoring</li>
+                  <li>Mortality records</li>
+                  <li>Farm income and expense recording</li>
+                  <li>Sick birds isolation record</li>
+                  <li>Medication usage record</li>
+                  <li>Crack egg record</li>
+                  <li>Environmental management e.g. temperature record</li>
+                  <li>Farm performance reports and analytics</li>
+                  <li>Staff and farm-management functions</li>
+                  <li>Notification alert</li>
+                  <li>Analytics such as laying cycle overview, tracking and monitoring feed usage, and financial analysis</li>
+                </ul>
+              </li>
+            </li>
+          </ul>
+      </div>
+      <div class="feature-group">
+        <h3>2.2 Instant connection with a local veterinarian</h3>
+        <ul class="terms-list">
+          <li>Create an account as a veterinarian</li>
+          <li>Verify your account using your veterinarian council license identification number (e.g. Veterinary Council of Nigeria “VCN”)</li>
+          <li>Update your services for visibility by farmers</li>
+          <li>Chat with farmers and provide services</li>
+          <li>Earn while you provide services</li>
+        </ul>
+      </div>
+      <div class="feature-group">
+        <h3>2.3 A learning platform that prioritises the human capital development of farm staff</h3>
+        <ul class="terms-list">
+          <li>It is designed to prioritise the development of farm staff.</li>
+          <li>It comes with simple, well-organised video learning modules that equip staff with the knowledge and skills needed for efficient poultry farm operation.</li>
+          <li>It accommodates individual differences, making it relevant, relatable and accessible to staff across educational levels.</li>
+        </ul>
+      </div>
+      <p>Features may be introduced, modified, suspended or discontinued as the Service develops. Also, use of some of these features depends on the farmer-owner's subscription package.</p>
+    </section>
+
+    <section class="terms-section" id="eligibility">
+      <div class="section-heading"><span class="section-number">03</span><h2>Eligibility</h2></div>
+      <p>You must be legally capable of entering into a binding agreement to create and operate a MyFarmSight account.</p>
+      <p>Where an account is created or operated on behalf of a farm, company or other organisation, the person creating or operating the account represents that they have appropriate authority to act on behalf of that organisation.</p>
+    </section>
+
+    <section class="terms-section" id="registration">
+      <div class="section-heading"><span class="section-number">04</span><h2>Account Registration</h2></div>
+      <p>MyFarmSight requires that farm owners, staff, and veterinarians create an account.</p>
+      <p>You agree to:</p>
+      <ul class="terms-list">
+        <li>Provide accurate and current information.</li>
+        <li>Maintain the accuracy of your account information.</li>
+        <li>Protect your login credentials.</li>
+        <li>Not knowingly permit unauthorised access to your account; and</li>
+        <li>Notify us if you become aware of unauthorised access or a security breach affecting your account.</li>
+      </ul>
+      <p>You are responsible for activities performed through your account where those activities result from your failure to reasonably secure your login credentials.</p>
+    </section>
+
+    <section class="terms-section" id="users">
+      <div class="section-heading"><span class="section-number">05</span><h2>Types of Users</h2></div>
+      <p>MyFarmSight may provide different categories of accounts, including, where applicable:</p>
+      <ul class="terms-list">
+        <li>Farm Owner</li>
+        <li>Farm Administrator</li>
+        <li>Farm Manager</li>
+        <li>Farm Staff</li>
+        <li>Veterinarian</li>
+        <li>Other authorised users</li>
+      </ul>
+      <p>Different account types may have different permissions and access levels.</p>
+      <p>Farm owners or administrators may be responsible for determining the level of access granted to staff or other users associated with their farm account.</p>
+    </section>
+
+    <section class="terms-section" id="acceptable-use">
+      <div class="section-heading"><span class="section-number">06</span><h2>Acceptable Use</h2></div>
+      <p>You agree to use MyFarmSight only for lawful purposes.</p>
+      <p>You must not:</p>
+      <ul class="terms-list">
+        <li>Use the Service for fraudulent or unlawful activities.</li>
+        <li>Provide deliberately false or misleading information.</li>
+        <li>Attempt to obtain unauthorised access to another user's account.</li>
+        <li>Interfere with the security or normal operation of the Service.</li>
+        <li>Introduce viruses, malicious code or other harmful technology.</li>
+        <li>Attempt to circumvent security measures.</li>
+        <li>Use automated systems to improperly extract or scrape information from the Service.</li>
+        <li>Impersonate another person or organisation.</li>
+        <li>Use the Service to infringe another person's intellectual property or privacy rights; or</li>
+        <li>Use MyFarmSight in a manner that violates applicable law or regulation.</li>
+      </ul>
+      <p>We may restrict or suspend accounts where we reasonably believe these Terms, applicable law, or the rights or safety of other users have been violated.</p>
+    </section>
+
+    <section class="terms-section" id="farm-data">
+      <div class="section-heading"><span class="section-number">07</span><h2>Farm Data and User Content</h2></div>
+      <p>Users may submit information including farm records, production data, flock information, financial records, photographs, videos of eggs and feeds in the storehouse, documents such as receipt of payment, certificate of water analysis, microbiology or biochemistry test results of the poultry bird sample and other content ("User Content").</p>
+      <p>You retain ownership of your User Content.</p>
+      <p>You grant SIAGROPAT LIMITED the limited rights necessary to host, store, process, reproduce and otherwise use User Content for the purpose of operating, securing, maintaining and improving the Service, subject to our Privacy Policy and applicable law.</p>
+      <p>You are responsible for ensuring that information submitted through your account is accurate and that you have the necessary authority or permission to provide it.</p>
+      <p>Where required, we will obtain appropriate consent before collecting or processing personal or sensitive information.</p>
+    </section>
+
+    <section class="terms-section" id="deletion">
+      <div class="section-heading"><span class="section-number">08</span><h2>Account and Data Deletion</h2></div>
+      <p>Users may request deletion of their MyFarmSight account and associated personal data.</p>
+      <p>Account deletion may be initiated through the account settings or designated account management area within the application.</p>
+      <p>Users may also submit an account deletion request through.</p>
+      <p>After we receive a valid deletion request, we will delete or anonymise personal information associated with the account as required by applicable law and our Privacy Policy.</p>
+      <p>We may retain certain information where reasonably necessary to comply with legal, regulatory, security, fraud-prevention, accounting, or legitimate record-keeping obligations.</p>
+      <p>Our Privacy Policy provides further information about data retention and deletion.</p>
+    </section>
+
+    <section class="terms-section" id="agricultural-information">
+      <div class="section-heading"><span class="section-number">09</span><h2>Agricultural Information Disclaimer</h2></div>
+      <p>Information, calculations, analytics, recommendations and educational materials available through MyFarmSight are intended to support farm management, build staff capacity and enhance decision-making.</p>
+      <p>They should not automatically be treated as a substitute for professional veterinary services, agricultural, financial or other specialist advice. Our Veterinarian platform can help you chat with and secure the services of a veterinarian close to you if you need one.</p>
+      <p>Users remain responsible for evaluating information generated by the platform and making decisions appropriate to their individual farms and circumstances.</p>
+      <p>Where animal health, disease, medication, biosecurity or other matters requiring professional expertise are involved, users should seek advice from an appropriately qualified professional.</p>
+    </section>
+
+    <section class="terms-section" id="veterinarians">
+      <div class="section-heading"><span class="section-number">10</span><h2>Veterinarians Services</h2></div>
+      <p>Where MyFarmSight enables users to communicate with veterinarians. These professionals may operate independently of SIAGROPAT LIMITED unless expressly stated otherwise.</p>
+      <p>MyFarmSight verifies veterinarians' licence numbers as part of the onboarding requirement. However, farmers may also independently assess the qualifications, suitability and advice of professionals before relying upon their services.</p>
+      <p>SIAGROPAT LIMITED does not guarantee a particular professional outcome from advice or services provided by independent third parties through or in connection with the platform.</p>
+    </section>
+
+    <section class="terms-section" id="subscriptions">
+      <div class="section-heading"><span class="section-number">11</span><h2>Subscriptions and Payments</h2></div>
+      <p>Certain MyFarmSight features may be offered free of charge, while others may require payment or subscription.</p>
+      <p>Where purchases are made through the Android application, and Google Play's billing requirements apply, transactions will be processed in accordance with applicable Google Play billing policies.</p>
+      <p>Before completing a purchase, users will be informed of applicable prices, billing periods and relevant subscription conditions.</p>
+      <p>Subscription cancellation and refund rights will be governed by the applicable purchase terms, platform rules and applicable consumer law.</p>
+    </section>
+
+    <section class="terms-section" id="third-party">
+      <div class="section-heading"><span class="section-number">12</span><h2>Third-Party Services</h2></div>
+      <p>MyFarmSight may integrate with third-party services, software, payment providers, analytics providers or external platforms.</p>
+      <p>Third-party services may be subject to their own terms and privacy policies.</p>
+      <p>SIAGROPAT LIMITED is not responsible for third-party services outside its reasonable control, except where responsibility cannot legally be excluded.</p>
+    </section>
+
+    <section class="terms-section" id="intellectual-property">
+      <div class="section-heading"><span class="section-number">13</span><h2>Intellectual Property</h2></div>
+      <p>Except for User Content and third-party materials, MyFarmSight and its associated intellectual property including software, databases, designs, graphics, branding, logos, trademarks and original content are owned by or licensed to SIAGROPAT LIMITED.</p>
+      <p>Nothing in these Terms transfers ownership of MyFarmSight intellectual property to users.</p>
+      <p>Users receive a limited, personal, revocable, non-exclusive and non-transferable right to use the Service in accordance with these Terms.</p>
+    </section>
+
+    <section class="terms-section" id="availability">
+      <div class="section-heading"><span class="section-number">14</span><h2>Service Availability</h2></div>
+      <p>We aim to provide a reliable Service but cannot guarantee uninterrupted or error free availability.</p>
+      <p>The Service may occasionally be unavailable because of:</p>
+      <ul class="terms-list">
+        <li>Scheduled maintenance</li>
+        <li>Software updates</li>
+        <li>Network interruptions</li>
+        <li>Security incidents</li>
+        <li>Third-party infrastructure failures; or</li>
+        <li>Circumstances outside our reasonable control.</li>
+      </ul>
+      <p>We may modify the Service to improve functionality, security, performance or regulatory compliance. You will be duly notified of such changes.</p>
+    </section>
+
+    <section class="terms-section" id="liability">
+      <div class="section-heading"><span class="section-number">15</span><h2>Limitation of Liability</h2></div>
+      <p>To the maximum extent permitted by applicable law, SIAGROPAT LIMITED will not be liable for indirect or consequential losses arising solely from reliance on information generated by MyFarmSight or from circumstances outside our reasonable control.</p>
+      <p>Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited.</p>
+      <p>Users remain responsible for farm management, commercial and professional decisions made using information available through the Service.</p>
+    </section>
+
+    <section class="terms-section" id="termination">
+      <div class="section-heading"><span class="section-number">16</span><h2>Suspension and Termination</h2></div>
+      <p>We may suspend or terminate access to the Service where reasonably necessary, including where:</p>
+      <ul class="terms-list">
+        <li>These Terms have been materially violated.</li>
+        <li>The Service is being used unlawfully.</li>
+        <li>Fraudulent or harmful activity is suspected.</li>
+        <li>Another user's rights or safety are threatened; or</li>
+        <li>Suspension is required by law or a competent authority.</li>
+        <li>Where reasonably practicable and legally permitted, appropriate notice may be provided.</li>
+        <li>Users may stop using MyFarmSight and request account deletion at any time.</li>
+      </ul>
+    </section>
+
+    <section class="terms-section" id="changes">
+      <div class="section-heading"><span class="section-number">17</span><h2>Changes to These Terms</h2></div>
+      <p>We may update these Terms where necessary to reflect changes to:</p>
+      <ul class="terms-list">
+        <li>MyFarmSight functionality</li>
+        <li>Applicable laws or regulations</li>
+        <li>Security requirements;</li>
+        <li>Business practices; or</li>
+        <li>Google Play or other applicable platform requirements.</li>
+      </ul>
+      <p>The current version will display its effective or last updated date.</p>
+      <p>Where changes materially affect users rights or obligations, we will provide appropriate notice where required.</p>
+    </section>
+
+    <section class="terms-section" id="governing-law">
+      <div class="section-heading"><span class="section-number">18</span><h2>Governing Law</h2></div>
+      <p>These Terms are governed by the laws applicable to SIAGROPAT LIMITED and its provision of the Service, subject to any mandatory consumer rights or other laws applicable to individual users.</p>
+      <p>Nothing in these Terms removes statutory rights that cannot lawfully be excluded.</p>
+    </section>
+
+    <section class="terms-section" id="contact">
+      <div class="section-heading"><span class="section-number">19</span><h2>Contact Us</h2></div>
+      <p>Questions, complaints or enquiries concerning these Terms may be submitted to:</p>
+      <p><strong>SIAGROPAT LIMITED</strong><br>Operator of MyFarmSight</p>
+      <p><strong>Email:</strong> <a href="mailto:support@myfarmsight.com">support@myfarmsight.com</a></p>
+      <p><strong>Website:</strong> <a href="https://www.myfarmsight.com">www.myfarmsight.com</a></p>
+    </section>
+
+    <section class="terms-section closing">
+      <p>By creating an account or continuing to use MyFarmSight, you acknowledge that you have read and understood these Terms of Service and agree to comply with them.</p>
+    </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="./images/my-farm-sight-logo.svg" alt="MyFarmSight" class="footer-logo">
+          <p>Smart tools and professional connections to help farmers grow with confidence.</p>
+          <div class="footer-brand-actions">
+            <div class="footer-stores">
+              <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" rel="noopener noreferrer" class="store-btn">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 466 511.98" aria-hidden="true">
+                  <g id="Layer_x0020_1">
+                    <path fill="#EA4335" fill-rule="nonzero" d="M199.9 237.8l-198.5 232.37c7.22,24.57 30.16,41.81 55.8,41.81 11.16,0 20.93,-2.79 29.3,-8.37l0 0 244.16 -139.46 -130.76 -126.35z" />
+                    <path fill="#FBBC04" fill-rule="nonzero" d="M433.91 205.1l0 0 -104.65 -60 -111.61 110.22 113.01 108.83 104.64 -58.6c18.14,-9.77 30.7,-29.3 30.7,-50.23 -1.4,-20.93 -13.95,-40.46 -32.09,-50.22z" />
+                    <path fill="#34A853" fill-rule="nonzero" d="M199.42 273.45l129.85 -128.35 -241.37 -136.73c-8.37,-5.58 -19.54,-8.37 -30.7,-8.37 -26.5,0 -50.22,18.14 -55.8,41.86 0,0 0,0 0,0l198.02 231.59z" />
+                    <path fill="#4285F4" fill-rule="nonzero" d="M1.39 41.86c-1.39,4.18 -1.39,9.77 -1.39,15.34l0 397.64c0,5.57 0,9.76 1.4,15.34l216.27 -214.86 -216.28 -213.46z" />
+                  </g>
+                </svg>
+                <div><span>Get it on</span><strong>Google Play</strong></div>
+              </a>
+            </div>
+            <div class="footer-extra-links">
+              <a href="privacy.html">Privacy Policy</a>
+              <a href="terms.html" aria-current="page">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h3>Get in touch</h3>
+          <div class="footer-contact-grid">
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+              <div><h4>Email</h4><a href="mailto:support@myfarmsight.com">support@myfarmsight.com</a></div>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+              <div><h4>Phone</h4><a href="tel:+2349157908725">+234 915 790 8725</a></div>
+            </div>
+            <div class="footer-contact-item">
+              <span class="footer-contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+              <div><h4>Temporary office address</h4>
+                <!-- <p>12 Example Street, Ikeja, Lagos, Nigeria</p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-social-column">
+          <h3>Follow us</h3>
+          <div class="footer-socials">
+            <a href="https://web.facebook.com/profile.php?id=61583886656196" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook" aria-hidden="true"></i>Facebook</a>
+            <a href="https://www.instagram.com/myfarmsight/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
+            <a href="https://www.tiktok.com/@myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</a>
+            <a href="https://x.com/myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a>
+            <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
