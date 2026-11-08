@@ -63,6 +63,7 @@
       gap: .55rem;
       flex: 1;
       min-width: 0;
+      font-size: 0.8rem;
     }
     .waitlist-announcement-cta {
       display: inline-flex;
@@ -1496,6 +1497,27 @@
       .comparison-table-wrap { max-height: 72vh; }
     }
 
+    @media (max-width: 400px) {
+  :root {
+    --announcement-height: 76px; /* a bit taller so text fits */
+  }
+  .waitlist-announcement-copy {
+    font-size: 0.62rem;
+    line-height: 1.25;
+    gap: .3rem;
+  }
+  .waitlist-announcement-cta {
+    padding: .35rem .55rem;
+    font-size: .68rem;
+    min-height: 30px;
+  }
+  .waitlist-announcement-close {
+    width: 24px;
+    height: 24px;
+    font-size: .85rem;
+  }
+}
+
     /* ── FOOTER ── */
     footer {
       background: linear-gradient(145deg, #14251a 0%, #111 75%);
@@ -1913,7 +1935,7 @@
   
   <!-- ── WAITLIST ANNOUNCEMENT ── -->
   <div class="waitlist-announcement">
-    <span class="waitlist-announcement-copy"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> MyFarmSight is scheduled for launch in December! The waitlist is open!</span>
+    <span class="waitlist-announcement-copy"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> MyFarmSight is scheduled for launch in December 2026! The waitlist is open!</span>
     <div class="waitlist-announcement-actions">
       <a href="/waitlist" class="waitlist-announcement-cta">Join the Waitlist</a>
       <button type="button" class="waitlist-announcement-close" id="closeAnnouncement" aria-label="Close announcement">
