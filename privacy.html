@@ -501,7 +501,7 @@
     }
     .footer-main {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, .7fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: start;
       gap: 3rem;
       padding-bottom: 2.25rem;
@@ -546,7 +546,7 @@
     .footer-brand-actions .store-btn svg {
       flex: 0 0 auto;
       width: 16px;
-      height: 18px;
+      height: 16px;
     }
     .footer-brand-actions .store-btn span {
       font-size: .62rem;
@@ -563,6 +563,11 @@
       font-size: 1.1rem;
       margin-bottom: .8rem;
       font-family: 'Nunito', sans-serif;
+    }
+    .footer-about h3 {
+      color: #fff;
+      font: 800 1.1rem 'Nunito', sans-serif;
+      margin-bottom: .8rem;
     }
     .footer-contact-grid {
       display: flex;
@@ -680,7 +685,7 @@
     }
     @media (max-width: 900px) {
       .footer-main {
-        grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem;
       }
     }
@@ -689,8 +694,23 @@
         grid-template-columns: 1fr;
         gap: 1.5rem;
       }
-      .footer-brand-actions {
-        margin-top: 2rem;
+      .footer-stores {
+        justify-content: center;
+      }
+      .store-btn {
+        min-height: 44px;
+        padding: 8px 12px;
+        gap: 8px;
+      }
+      .store-btn svg {
+        flex: 0 0 auto;
+      }
+      .store-btn strong {
+        font-size: .8rem;
+      }
+      .footer-socials {
+        gap: 0;
+        align-items: flex-start;
       }
       .footer-socials {
         gap: 0;
@@ -1068,51 +1088,55 @@
                 <div><span>Get it on</span><strong>Google Play</strong></div>
               </a>
             </div>
-            <div class="footer-extra-links">
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="terms.html">Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-about">
+        <h3>About</h3>
+        <div class="footer-socials">
+          <a href="index.html#about"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>About Us</a>
+          <a href="privacy.html" aria-current="page"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Our Policy</a>
+          <a href="terms.html"><i class="fa-solid fa-file-contract" aria-hidden="true"></i>Terms of Service</a>
+        </div>
+      </div>
+      <div class="footer-contact">
+        <h3>Get in touch</h3>
+        <div class="footer-contact-grid">
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:support@myfarmsight.com">support@myfarmsight.com</a>
             </div>
           </div>
-        </div>
-        <div class="footer-contact">
-          <h3>Get in touch</h3>
-          <div class="footer-contact-grid">
-            <div class="footer-contact-item">
-              <span class="footer-contact-icon"><i class="fa-solid fa-envelope" aria-hidden="true"></i></span>
-              <div>
-                <h4>Email</h4>
-                <a href="mailto:support@myfarmsight.com">support@myfarmsight.com</a>
-              </div>
-            </div>
-            <div class="footer-contact-item">
-              <span class="footer-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
-              <div>
-                <h4>Phone</h4>
-                <a href="tel:+2349157908725">+234 915 790 8725</a>
-              </div>
-            </div>
-            <div class="footer-contact-item">
-              <span class="footer-contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
-              <div>
-                <h4>Temporary office address</h4>
-                <!-- <p>12 Example Street, Ikeja, Lagos, Nigeria</p> -->
-              </div>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon"><i class="fa-solid fa-phone" aria-hidden="true"></i></span>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+2349157908725">+234 915 790 8725</a>
             </div>
           </div>
-        </div>
-        <div class="footer-social-column">
-          <h3>Follow us</h3>
-          <div class="footer-socials">
-            <a href="https://web.facebook.com/profile.php?id=61583886656196" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook" aria-hidden="true"></i>Facebook</a>
-            <a href="https://www.instagram.com/myfarmsight/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
-            <a href="https://www.tiktok.com/@myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</a>
-            <a href="https://x.com/myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a>
-            <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</a>
+          <div class="footer-contact-item">
+            <span class="footer-contact-icon"><i class="fa-solid fa-location-dot" aria-hidden="true"></i></span>
+            <div>
+              <h4>Temporary office address</h4>
+              <!-- <p>12 Example Street, Ikeja, Lagos, Nigeria</p> -->
+            </div>
           </div>
         </div>
       </div>
-      <div class="footer-bottom">
-        <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
+      <div class="footer-social-column">
+        <h3>Follow us</h3>
+        <div class="footer-socials">
+          <a href="https://web.facebook.com/profile.php?id=61583886656196" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook" aria-hidden="true"></i>Facebook</a>
+          <a href="https://www.instagram.com/myfarmsight/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram" aria-hidden="true"></i>Instagram</a>
+          <a href="https://www.tiktok.com/@myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok" aria-hidden="true"></i>TikTok</a>
+          <a href="https://x.com/myfarmsight" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter" aria-hidden="true"></i>Twitter</a>
+          <a href="https://www.youtube.com/@MyFarmsight/videos" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube" aria-hidden="true"></i>YouTube</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">© 2026 MyFarmSight. All rights reserved.</div>
     </div>
   </div>
 </footer>

@@ -20,6 +20,7 @@
       --gray-dark: #2d2d2d;
       --off-white: #f7fbf7;
       --swiper-pagination-color: #2ECC40;
+      --announcement-height: 52px;
     }
     * {
       box-sizing: border-box;
@@ -32,14 +33,81 @@
       background: #fff;
       overflow-x: hidden;
     }
+    body.announcement-dismissed {
+      --announcement-height: 0px;
+    }
     h1, h2, h3, h4, .brand {
       font-family: 'Nunito', sans-serif;
     }
     
     /* ── NAV ── */
-    nav {
+    .waitlist-announcement {
       position: fixed;
       top: 0;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      height: var(--announcement-height);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--green-dark);
+      color: #fff;
+      font-weight: 800;
+    }
+    .waitlist-announcement-copy {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      flex: 1;
+      min-width: 0;
+    }
+    .waitlist-announcement-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 36px;
+      padding: .45rem 1rem;
+      border-radius: 999px;
+      background: #fff;
+      color: var(--green-dark);
+      font-size: .82rem;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: transform .15s, background .2s;
+    }
+    .waitlist-announcement-cta:hover {
+      transform: translateY(-1px);
+      background: var(--green-light);
+    }
+    .waitlist-announcement-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .waitlist-announcement-close {
+      display: inline-grid;
+      place-items: center;
+      width: 32px;
+      height: 32px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .waitlist-announcement-close:hover {
+      background: rgba(255, 255, 255, .16);
+    }
+    nav {
+      position: fixed;
+      top: var(--announcement-height);
       left: 0;
       right: 0;
       z-index: 100;
@@ -50,7 +118,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 70px;
+      height: 80px;
     }
     .nav-logo {
       display: flex;
@@ -119,7 +187,7 @@
     }
     .mobile-menu {
       position: fixed;
-      top: 70px;
+      top: calc(var(--announcement-height) + 80px);
       left: 0;
       width: 100%;
       background: rgba(255, 255, 255, 0.98);
@@ -156,7 +224,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      padding-top: 70px;
+      padding-top: calc(var(--announcement-height) + 80px);
       background: linear-gradient(160deg, #f0faf1 0%, #ffffff 55%, #e8f9ea 100%);
       display: flex;
       align-items: center;
@@ -511,12 +579,6 @@
       line-height: 1.8;
       margin-top: 1.2rem;
     }
-    .about-waitlist-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 1.25rem;
-    }
     .about-gallery {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -791,18 +853,6 @@
       border-radius: 24px;
       box-shadow: 0 12px 35px rgba(31, 80, 38, 0.06);
     }
-    .how-pathway-image {
-      display: block;
-      width: calc(100% + 4rem);
-      max-width: none;
-      height: 320px;
-      margin: -2rem -2rem 1.5rem;
-      border-radius: 24px 24px 0 0;
-      background: #c9edf1;
-      object-fit: cover;
-      object-position: center 35%;
-    }
-    .how-pathway-image-farmer { object-position: center 64%; }
     .how-pathway-heading {
       display: flex;
       align-items: center;
@@ -811,16 +861,23 @@
       border-bottom: 1px solid #edf4ed;
     }
     .how-pathway-icon {
-      flex: 0 0 48px;
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
+      flex: 0 0 64px;
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
       background: var(--green-light);
       color: var(--green-dark);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.7rem;
+    }
+    .how-pathway-icon img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      object-fit: cover;
     }
     .how-pathway-heading h3 {
       font-size: 1.35rem;
@@ -1451,7 +1508,7 @@
     }
     .footer-main {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, .7fr);
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       align-items: start;
       gap: 3rem;
       padding-bottom: 2.25rem;
@@ -1531,6 +1588,11 @@
       color: var(--green);
     }
     .footer-social-column h3 {
+      color: #fff;
+      font: 800 1.1rem 'Nunito', sans-serif;
+      margin-bottom: .8rem;
+    }
+    .footer-about h3 {
       color: #fff;
       font: 800 1.1rem 'Nunito', sans-serif;
       margin-bottom: .8rem;
@@ -1680,7 +1742,7 @@
         grid-template-columns: 1fr;
       }
       .footer-main {
-        grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 2rem;
       }
       /* Hide desktop nav links, show hamburger */
@@ -1693,6 +1755,30 @@
     }
 
     @media (max-width: 600px) {
+      :root {
+        --announcement-height: 64px;
+      }
+      .waitlist-announcement {
+        padding: 0 .75rem;
+        gap: .5rem;
+        font-size: .76rem;
+        line-height: 1.2;
+      }
+      .waitlist-announcement-actions {
+        gap: .2rem;
+      }
+      .waitlist-announcement-copy {
+        gap: .35rem;
+      }
+      .waitlist-announcement-cta {
+        min-height: 34px;
+        padding: .4rem .7rem;
+        font-size: .74rem;
+      }
+      .waitlist-announcement-close {
+        width: 28px;
+        height: 28px;
+      }
       .pricing-grid {
         grid-template-columns: 1fr;
       }
@@ -1715,11 +1801,6 @@
       }
       .how-pathway {
         padding: 1.5rem;
-      }
-      .how-pathway-image {
-        width: calc(100% + 3rem);
-        height: 190px;
-        margin: -1.5rem -1.5rem 1.25rem;
       }
       .footer-main {
         grid-template-columns: 1fr;
@@ -1830,6 +1911,17 @@
 <body>
   <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1762474498192485&amp;ev=PageView&amp;noscript=1" alt=""></noscript>
   
+  <!-- ── WAITLIST ANNOUNCEMENT ── -->
+  <div class="waitlist-announcement">
+    <span class="waitlist-announcement-copy"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i> MyFarmSight is scheduled for launch in December! The waitlist is open!</span>
+    <div class="waitlist-announcement-actions">
+      <a href="/waitlist" class="waitlist-announcement-cta">Join the Waitlist</a>
+      <button type="button" class="waitlist-announcement-close" id="closeAnnouncement" aria-label="Close announcement">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+
   <!-- ── NAV ── -->
   <nav>
     <div class="nav-logo">
@@ -1947,7 +2039,6 @@
           <span class="section-tag">About Us</span>
           <h2 class="section-title">MyFarmSight is a complete ecosystem for poultry farmers.</h2>
           <p class="about-lead-text"><strong>MyFarmSight</strong> is a product developed by SIAGROPAT LIMITED. A company focused on revolutionising agricultural practice through a simple, innovative farming approach.</p>
-          <a href="/waitlist" class="btn-primary about-waitlist-cta">Join the Waitlist <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
         </div>
 
         <div class="about-gallery" aria-hidden="true">
@@ -2129,9 +2220,8 @@
       </div>
       <div class="how-pathways">
         <div class="how-pathway">
-          <img class="how-pathway-image how-pathway-image-farmer" src="./images/Farmer%20Icon.jpg.jpeg" alt="Farmer holding a chicken on a poultry farm" loading="lazy">
           <div class="how-pathway-heading">
-            <div class="how-pathway-icon"><i class="fa-solid fa-tractor" aria-hidden="true"></i></div>
+            <div class="how-pathway-icon" aria-hidden="true"><img src="./images/Farmer%20Icon.png" alt="" width="64" height="64" loading="lazy"></div>
             <div>
               <h3>For Farmers</h3>
               <p>Organize your farm and make informed decisions.</p>
@@ -2177,9 +2267,8 @@
         </div>
 
         <div class="how-pathway">
-          <img class="how-pathway-image" src="./images/Vet%20icon.jpg.jpeg" alt="Veterinarian holding a chicken" loading="lazy">
           <div class="how-pathway-heading">
-            <div class="how-pathway-icon"><i class="fa-solid fa-user-doctor" aria-hidden="true"></i></div>
+            <div class="how-pathway-icon" aria-hidden="true"><img src="./images/Vet%20icon.png" alt="" width="64" height="64" loading="lazy"></div>
             <div>
               <h3>For Veterinarians</h3>
               <p>Reach farmers and deliver professional care.</p>
@@ -2365,10 +2454,7 @@
             <li>Staff verification & Flock cycle analytics</li>
             <li>Weekly summaries, All reports & Limited veterinary access</li>
           </ul>
-<<<<<<< Updated upstream
          
-=======
->>>>>>> Stashed changes
           <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-outline">Get Started</a>
         </div>
 
@@ -2538,10 +2624,14 @@
                 <div><span>Get it on</span><strong>Google Play</strong></div>
               </a>
             </div>
-            <div class="footer-extra-links">
-              <a href="privacy.html">Privacy Policy</a>
-              <a href="terms.html">Terms of Service</a>
-            </div>
+          </div>
+        </div>
+        <div class="footer-about">
+          <h3>About</h3>
+          <div class="footer-socials">
+            <a href="index.html#about"><i class="fa-solid fa-circle-info" aria-hidden="true"></i>About Us</a>
+            <a href="privacy.html"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i>Our Policy</a>
+            <a href="terms.html"><i class="fa-solid fa-file-contract" aria-hidden="true"></i>Terms of Service</a>
           </div>
         </div>
         <div class="footer-contact">
@@ -2759,6 +2849,14 @@
 
   // Scroll to Top Logic
   const scrollTopBtn = document.getElementById('scrollTopBtn');
+  const closeAnnouncement = document.getElementById('closeAnnouncement');
+  if (closeAnnouncement) {
+    closeAnnouncement.addEventListener('click', () => {
+      document.querySelector('.waitlist-announcement').remove();
+      document.body.classList.add('announcement-dismissed');
+    });
+  }
+
   if (scrollTopBtn) {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 300) {
