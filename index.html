@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-TRFFMBKB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MyFarmSight – Smart Farm Management</title>
@@ -1218,19 +1224,21 @@
     }
     .plan-btn {
       display: block;
+      width: 100%;
       text-align: center;
       padding: 13px;
       border-radius: 50px;
       font-weight: 800;
       font-size: 0.9rem;
-      text-decoration: none;
       transition: all .2s;
       font-family: 'Nunito', sans-serif;
       margin-top: auto;
+      cursor: pointer;
     }
     .plan-btn-outline {
       border: 2px solid var(--green);
       color: var(--green);
+      background: transparent;
     }
     .plan-btn-outline:hover {
       background: var(--green);
@@ -1239,6 +1247,7 @@
     .plan-btn-white {
       background: #fff;
       color: var(--green-dark);
+      border: 0;
     }
     .plan-btn-white:hover {
       background: #f0f0f0;
@@ -1285,7 +1294,18 @@
       justify-content: center;
       flex-wrap: wrap;
     }
+    .cta-buttons > .cta-btn-white,
+    .cta-buttons > .cta-btn-ghost {
+      display: inline-flex;
+      width: 230px;
+      height: 56px;
+      box-sizing: border-box;
+      align-items: center;
+      justify-content: center;
+    }
     .cta-btn-white {
+      border: 0;
+      cursor: pointer;
       background: #fff;
       color: var(--green-dark);
       padding: 14px 32px;
@@ -1313,6 +1333,24 @@
     .cta-btn-ghost:hover {
       border-color: #fff;
       background: rgba(255, 255, 255, 0.1);
+    }
+    .modal-content.enquiry-modal-content {
+      width: min(760px, 96vw);
+      max-width: 760px;
+      max-height: 92vh;
+      padding: 3rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+    }
+    .modal-content.enquiry-modal-content h3 {
+      margin: 0 2.5rem 1rem 1rem;
+    }
+    .enquiry-modal-content iframe {
+      display: block;
+      width: 100%;
+      height: min(1854px, 78vh);
+      border: 0;
     }
     
     /* ── MODAL ── */
@@ -2456,7 +2494,7 @@
             <li>Feed stock management</li>
             <li>Feed consumption tracking</li>
           </ul>
-          <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-outline">Get Started</a>
+          <button type="button" class="plan-btn plan-btn-outline" onclick="window.open('https://play.google.com/store/apps/details?id=com.myfarmsight.app', '_blank', 'noopener,noreferrer')">Get Started</button>
         </div>
 
         <!-- Standard Plan -->
@@ -2477,7 +2515,7 @@
             <li>Weekly summaries, All reports & Limited veterinary access</li>
           </ul>
          
-          <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-outline">Get Started</a>
+          <button type="button" class="plan-btn plan-btn-outline" onclick="window.open('https://play.google.com/store/apps/details?id=com.myfarmsight.app', '_blank', 'noopener,noreferrer')">Get Started</button>
         </div>
 
         <!-- Advanced Plan -->
@@ -2495,7 +2533,7 @@
             <li>All Standard plan operations</li>
             <li>Full veterinary platform access</li>
           </ul>
-          <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="plan-btn plan-btn-white">Get Started</a>
+          <button type="button" class="plan-btn plan-btn-white" onclick="window.open('https://play.google.com/store/apps/details?id=com.myfarmsight.app', '_blank', 'noopener,noreferrer')">Get Started</button>
         </div>
 
         <!-- Custom Plan -->
@@ -2590,10 +2628,27 @@
     <p>Join thousands of farmers across Nigeria already using MyFarmSight to manage smarter, grow faster, and earn more.
     </p>
     <div class="cta-buttons">
-      <a href="https://play.google.com/store/apps/details?id=com.myfarmsight.app" target="_blank" class="cta-btn-white">📥 Get Started</a>
+      <button type="button" class="cta-btn-white" onclick="openEnquiryModal(this)">Submit an Enquiry</button>
       <button onclick="openModal()" class="cta-btn-ghost" style="cursor: pointer;">📞 Talk to Our Team</button>
     </div>
   </section>
+
+  <div class="modal-overlay" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="enquiryModalTitle" aria-hidden="true" onclick="closeEnquiryModal(event)">
+    <div class="modal-content enquiry-modal-content" onclick="event.stopPropagation()">
+      <button class="modal-close" type="button" aria-label="Close enquiry form" onclick="closeEnquiryModal()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 1L1 13M1 1L13 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <h3 id="enquiryModalTitle">Submit an Enquiry</h3>
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSepdPSgmU8Nt-gUX9oopW0FEctSEmCzMvmYlQvaZi5tpPXdfg/viewform?embedded=true"
+        title="MyFarmSight enquiry form"
+        loading="lazy">
+        Loading…
+      </iframe>
+    </div>
+  </div>
 
   <!-- ── CONTACT MODAL ── -->
   <div class="modal-overlay" id="contactModal" onclick="closeModal(event)">
@@ -2793,6 +2848,35 @@
   });
 
   // Modal Logic
+  let enquiryTrigger = null;
+
+  function openEnquiryModal(trigger) {
+    const modal = document.getElementById('enquiryModal');
+    enquiryTrigger = trigger;
+    modal.classList.add('active');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.modal-close').focus();
+  }
+
+  function closeEnquiryModal(event) {
+    const modal = document.getElementById('enquiryModal');
+    if (event && event.target !== modal) return;
+    modal.classList.remove('active');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    if (enquiryTrigger) {
+      enquiryTrigger.focus();
+      enquiryTrigger = null;
+    }
+  }
+
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape' && document.getElementById('enquiryModal').classList.contains('active')) {
+      closeEnquiryModal();
+    }
+  });
+
   function openModal() {
       document.getElementById('contactModal').classList.add('active');
       document.body.style.overflow = 'hidden';
