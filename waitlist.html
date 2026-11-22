@@ -34,6 +34,15 @@
       min-height: 100vh;
       font-family: Arial, sans-serif;
     }
+    body.form-submitted {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: 0;
+      overflow: hidden;
+    }
 
     /* Main wrapper for logo and Google Form */
 .waitlist-wrapper {
@@ -70,8 +79,33 @@
 .form-container iframe {
   display: block;
   width: 100%;
-  height: 2800px;
+  height: 2829px;
   border: none;
+}
+
+body.form-submitted .waitlist-wrapper,
+body.form-submitted .form-container {
+  height: 100vh;
+  height: 100dvh;
+}
+
+body.form-submitted .waitlist-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+}
+
+body.form-submitted .logo-container {
+  flex: 0 0 150px;
+}
+
+body.form-submitted .form-container {
+  flex: 1;
+  min-height: 0;
+}
+
+body.form-submitted .form-container iframe {
+  height: 100%;
 }
 
 /* Mobile responsiveness */
@@ -92,8 +126,8 @@
     max-width: 65%;
   }
 
-  .form-container iframe {
-    height: 3200px;
+  body.form-submitted .logo-container {
+    flex-basis: 120px;
   }
 }
   </style>
@@ -127,7 +161,7 @@
     <div class="logo-container">
       <img
         src="/images/my-farm-sight-logo.svg"
-        alt="MyFarmSight Logo">
+        alt="MyFarmSight Logo"> 
     </div>
 
     <!-- Google Waitlist Form -->
@@ -141,5 +175,59 @@
     </div>
 
   </div>
+
+  <script>
+    const waitlistFrame = document.querySelector('.form-container iframe');
+    const formHeights = [
+      [320, 3479],
+      [360, 3369],
+      [375, 3283],
+      [390, 3199],
+      [414, 3135],
+      [430, 3093],
+      [450, 3051],
+      [480, 2983],
+      [520, 2963],
+      [560, 2875],
+      [600, 2829],
+      [645, 2829]
+    ];
+    let waitlistFrameLoaded = false;
+    let waitlistFormSubmitted = false;
+
+    function resizeWaitlistFrame() {
+      if (waitlistFormSubmitted) return;
+
+      const width = Math.min(Math.max(window.innerWidth, 320), 645);
+      let lower = formHeights[0];
+      let upper = formHeights[formHeights.length - 1];
+
+      for (let i = 1; i < formHeights.length; i++) {
+        if (width <= formHeights[i][0]) {
+          lower = formHeights[i - 1];
+          upper = formHeights[i];
+          break;
+        }
+      }
+
+      const ratio = (width - lower[0]) / (upper[0] - lower[0]);
+      waitlistFrame.style.height = `${Math.round(lower[1] + ratio * (upper[1] - lower[1]))}px`;
+    }
+
+    waitlistFrame.addEventListener('load', function() {
+      if (!waitlistFrameLoaded) {
+        waitlistFrameLoaded = true;
+        return;
+      }
+
+      waitlistFormSubmitted = true;
+      document.body.classList.add('form-submitted');
+      waitlistFrame.style.height = '';
+      window.scrollTo(0, 0);
+    });
+
+    window.addEventListener('resize', resizeWaitlistFrame);
+    resizeWaitlistFrame();
+  </script>
 </body>
 </html>
